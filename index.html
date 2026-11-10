@@ -4708,9 +4708,11 @@ html.lb-open{overflow:hidden}
     if (down) goNext(); else goPrev();
   }, {passive:false});
 
-  /* L'ouverture du site joue l'entrée du prologue, une seule fois */
+  /* L'ouverture du site joue l'entrée du prologue, une seule fois.
+     Appel direct : l'animation part dès le premier rendu, même si le
+     navigateur diffère les requestAnimationFrame (onglet en arrière-plan). */
   if (!reduce && chapters[0] && window.scrollY < 20){
-    requestAnimationFrame(() => revealStop({ch: chapters[0]}));
+    revealStop({ch: chapters[0]});
   }
 
   /* ---------------------------------------------------------
