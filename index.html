@@ -41,9 +41,13 @@
   --orange-2:#ff9d55;
   --red:#c62b1f;
   --red-2:#ff4433;
+  --gold:#ffcf7a;
+  --gold-2:#ffe8bd;
+  --blue:#5aa9ff;
+  --blue-2:#a8d4ff;
   --cream:#f6e9d5;
   --sand:#e2c7a3;
-  --muted:#a9998a;
+  --muted:#c3b3a2;
   --line:rgba(246,233,213,.16);
   --serif:'Fraunces',Georgia,'Times New Roman',serif;
   --sans:'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
@@ -157,9 +161,9 @@ h2 em{font-style:italic;color:var(--orange-2)}
 .date-line::after{content:"";height:1px;width:90px;background:linear-gradient(90deg,var(--red),transparent)}
 
 .lead{max-width:56ch;margin-top:22px;font-size:clamp(15px,1.35vw,19px);line-height:1.66;
-  color:rgba(246,233,213,.82);text-shadow:0 12px 40px rgba(0,0,0,.8)}
+  color:rgba(246,233,213,.94);text-shadow:0 12px 40px rgba(0,0,0,.8)}
 .more{max-width:54ch;margin-top:14px;font-size:clamp(13px,1.05vw,15px);line-height:1.7;
-  color:rgba(246,233,213,.52);text-shadow:0 10px 30px rgba(0,0,0,.8)}
+  color:rgba(246,233,213,.76);text-shadow:0 10px 30px rgba(0,0,0,.8)}
 .copy.center .lead{margin-left:auto;margin-right:auto}
 
 .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
@@ -470,7 +474,7 @@ h2 em{font-style:italic;color:var(--orange-2)}
   padding:11px 0;border-bottom:1px solid rgba(246,233,213,.08)}
 .chrono li b{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--orange-2);font-weight:400;line-height:1.6}
-.chrono li span{font-size:clamp(12px,1vw,14px);line-height:1.55;color:rgba(246,233,213,.68)}
+.chrono li span{font-size:clamp(12px,1vw,14px);line-height:1.55;color:rgba(246,233,213,.8)}
 
 /* Chiffres clés */
 .figures{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(22px,4vw,58px);
@@ -512,11 +516,208 @@ h2 em{font-style:italic;color:var(--orange-2)}
   .copy{bottom:96px;width:calc(100vw - 64px)}
   .copy.center{width:calc(100vw - 56px)}
   .lead{font-size:14px}
-  .more{display:none}
+  .more{display:block;font-size:13px;line-height:1.62;margin-top:10px}
   .chips span{font-size:8px;padding:6px 10px}
   .cue{display:none}
   .chapter{height:210vh}
   .chapter.hero{height:150vh}
+}
+
+@media (max-height:560px){
+  .more{display:none}
+}
+
+/* ============================================================
+   LE COURS — PLAN STRUCTURÉ
+   ============================================================ */
+.cours{
+  --c-blue:#5aa9ff;
+  --c-blue-2:#a8d4ff;
+  --c-red:#ff6f5c;
+  --c-red-2:#ffa899;
+  --c-gold:#ffcf7a;
+  --c-gold-2:#ffe8bd;
+  --c-key:#ffa15e;
+  position:relative;z-index:2;
+  padding:clamp(84px,12vh,150px) 0 clamp(66px,9vh,104px);
+  background:
+    radial-gradient(1000px 700px at 10% 0%,rgba(90,169,255,.15),transparent 60%),
+    radial-gradient(1000px 720px at 96% 20%,rgba(198,43,31,.16),transparent 62%),
+    radial-gradient(900px 700px at 46% 100%,rgba(240,121,54,.11),transparent 62%),
+    linear-gradient(180deg,#05080f 0%,#08111e 24%,#0e0b12 66%,#070a11 100%);
+  border-top:1px solid rgba(246,233,213,.12);
+}
+.cours-inner{width:min(1100px,calc(100vw - clamp(40px,10vw,160px)));margin:0 auto}
+.cours ::selection{background:var(--orange);color:#160b04}
+
+.cours-head{position:relative}
+.cours-head h2{font-size:clamp(38px,5.4vw,82px);line-height:.97;letter-spacing:-.04em;
+  margin-top:16px}
+.cours-head h2 em{font-style:italic;color:var(--c-gold);
+  text-shadow:0 0 60px rgba(255,207,122,.28)}
+.cours-lede{max-width:68ch;margin-top:22px;font-size:clamp(15px,1.3vw,18px);
+  line-height:1.8;color:rgba(246,233,213,.93)}
+.cours-lede b{color:var(--c-gold);font-weight:600}
+.cours-sub{max-width:62ch;margin-top:12px;font-size:clamp(12px,1vw,14px);
+  line-height:1.75;color:rgba(168,212,255,.8)}
+
+/* --- Sommaire --- */
+.sommaire{margin-top:clamp(32px,4.5vw,50px);padding:clamp(20px,3vw,32px);
+  border:1px solid rgba(246,233,213,.16);
+  background:linear-gradient(155deg,rgba(246,233,213,.06),rgba(246,233,213,.012));
+  box-shadow:0 34px 90px rgba(0,0,0,.4)}
+.sommaire-head{display:flex;justify-content:space-between;align-items:baseline;gap:18px;
+  padding-bottom:14px;border-bottom:1px solid rgba(246,233,213,.16);
+  font-family:var(--mono);font-size:9px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--orange-2)}
+.sommaire-head span:last-child{color:rgba(246,233,213,.42);letter-spacing:.2em}
+.sommaire ol{list-style:none;display:grid;grid-template-columns:1fr 1fr;
+  gap:0 clamp(24px,4vw,46px);margin-top:6px}
+.sommaire li{min-width:0}
+.sommaire a{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:baseline;
+  padding:11px 8px 11px 4px;border-bottom:1px solid rgba(246,233,213,.09);
+  text-decoration:none;color:rgba(246,233,213,.86);
+  transition:background .25s,color .25s,padding-left .25s}
+.sommaire a:hover,.sommaire a:focus-visible{background:rgba(240,121,54,.11);
+  color:#fff;padding-left:10px;outline:none}
+.sommaire b{font-family:var(--mono);font-size:9px;font-weight:400;letter-spacing:.1em;
+  color:var(--c-gold)}
+.sommaire li:nth-child(3n+2) b{color:var(--c-blue-2)}
+.sommaire li:nth-child(3n) b{color:var(--c-red-2)}
+.sommaire li.sub a{padding-left:22px}
+.sommaire li.sub a:hover,.sommaire li.sub a:focus-visible{padding-left:28px}
+.sommaire li.sub b{color:rgba(246,233,213,.4);font-size:8.5px}
+.sommaire li.sub span{color:rgba(246,233,213,.7)}
+
+/* --- Leçon --- */
+.lesson{--accent:var(--c-gold);margin-top:clamp(52px,7vw,82px);
+  padding-top:clamp(30px,4vw,46px);border-top:1px solid rgba(246,233,213,.13);
+  scroll-margin-top:20px}
+.lesson-head{margin-bottom:clamp(18px,2.4vw,26px)}
+.lesson-kicker{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);
+  font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent)}
+.lesson-kicker::before{content:"";width:32px;height:2px;background:var(--accent);
+  box-shadow:0 0 14px var(--accent)}
+.lesson-head h3{font-family:var(--serif);font-weight:900;font-size:clamp(27px,3.3vw,46px);
+  line-height:1.04;letter-spacing:-.025em;color:var(--cream);margin-top:12px;
+  text-shadow:0 20px 60px rgba(0,0,0,.55)}
+.lesson-head h3 em{font-style:italic;color:var(--accent)}
+.lesson-body{max-width:78ch}
+.lesson-lead{font-size:clamp(15px,1.22vw,17.5px);line-height:1.78;
+  color:rgba(246,233,213,.96)}
+.lesson-body p{font-size:clamp(14px,1.06vw,15.5px);line-height:1.85;margin-top:15px;
+  color:rgba(246,233,213,.84)}
+.lesson-body p b,.lesson-lead b{color:#fff4e2;font-weight:600}
+
+/* Emphases colorées : dates, noms, notions, camps, chiffres */
+.cours .d{color:var(--c-gold);font-weight:600}
+.cours .n{color:#fff1d6;font-weight:600}
+.cours .k{color:var(--c-key);font-weight:600}
+.cours .e{color:var(--c-blue-2);font-weight:600}
+.cours .c{color:var(--c-red-2);font-weight:600}
+.cours .f{color:var(--c-gold-2);font-weight:600;font-variant-numeric:tabular-nums}
+
+.lesson-facts{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.lesson-facts li{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(246,233,213,.8);
+  border:1px solid rgba(246,233,213,.18);border-radius:999px;padding:8px 13px;
+  background:rgba(6,10,18,.42)}
+.lesson-facts b{color:var(--accent);font-weight:400}
+
+.lesson-note{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
+  margin-top:24px;padding:clamp(16px,2.4vw,24px);
+  background:linear-gradient(100deg,rgba(246,233,213,.055),rgba(246,233,213,.012));
+  border-left:2px solid var(--accent)}
+.lesson-note .note-mark{font-family:var(--serif);font-weight:900;
+  font-size:clamp(24px,2.5vw,34px);line-height:.9;color:var(--accent)}
+.lesson-note p{font-size:clamp(12.5px,1vw,14px);line-height:1.75;
+  color:rgba(246,233,213,.85);max-width:74ch}
+.lesson-note b{color:var(--accent);font-weight:600}
+
+/* --- Deux camps face à face --- */
+.camps{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,20px);margin-top:24px}
+.camp{padding:clamp(16px,2.4vw,24px);border:1px solid rgba(246,233,213,.14);
+  background:linear-gradient(155deg,rgba(90,169,255,.14),rgba(246,233,213,.015))}
+.camp.central{background:linear-gradient(155deg,rgba(198,43,31,.18),rgba(246,233,213,.015))}
+.camp-tag{font-family:var(--mono);font-size:8px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--c-blue-2)}
+.camp.central .camp-tag{color:var(--c-red-2)}
+.camp h4{font-family:var(--serif);font-weight:900;font-size:clamp(18px,1.8vw,23px);
+  line-height:1.1;color:var(--cream);margin-top:6px}
+.camp ul{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:5px}
+.camp li{position:relative;padding-left:14px;font-size:clamp(12px,1vw,13.5px);
+  line-height:1.55;color:rgba(246,233,213,.84)}
+.camp li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:1px;
+  background:currentColor;opacity:.6}
+.camp p{font-size:clamp(12px,1vw,13.5px);line-height:1.72;
+  color:rgba(246,233,213,.72);margin-top:10px}
+
+/* --- Repères chronologiques --- */
+.lesson-timeline{list-style:none;margin-top:24px;
+  border-left:1px solid rgba(246,233,213,.2);
+  padding-left:clamp(16px,2vw,22px)}
+.lesson-timeline li{position:relative;padding:9px 0 9px 4px}
+.lesson-timeline li::before{content:"";position:absolute;
+  left:calc(-1 * clamp(16px,2vw,22px) - 3px);top:1.2em;width:7px;height:7px;
+  border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.lesson-timeline b{display:inline-block;min-width:64px;font-family:var(--mono);font-size:9px;
+  letter-spacing:.16em;color:var(--accent);font-weight:400}
+.lesson-timeline span{font-size:clamp(12.5px,1vw,14px);line-height:1.65;
+  color:rgba(246,233,213,.82)}
+
+/* --- Causes numérotées --- */
+.causes{list-style:none;counter-reset:cause;margin-top:24px;display:grid;gap:10px}
+.causes li{counter-increment:cause;display:grid;grid-template-columns:40px 1fr;gap:14px;
+  padding:14px 16px;border:1px solid rgba(246,233,213,.1);
+  background:rgba(246,233,213,.025)}
+.causes li::before{content:"0" counter(cause);font-family:var(--mono);font-size:10px;
+  letter-spacing:.1em;color:var(--c-gold);padding-top:2px;grid-column:1;grid-row:1 / span 2}
+.causes b{display:block;grid-column:2;font-family:var(--serif);font-weight:600;
+  font-size:clamp(15px,1.35vw,18px);color:var(--cream);margin-bottom:4px}
+.causes span{display:block;grid-column:2;font-size:clamp(12.5px,1vw,14px);line-height:1.7;
+  color:rgba(246,233,213,.78)}
+.causes li:nth-child(2)::before{color:var(--c-blue-2)}
+.causes li:nth-child(3)::before{color:var(--c-red-2)}
+.causes li:nth-child(4)::before{color:var(--c-gold)}
+.causes li:nth-child(5)::before{color:var(--c-blue-2)}
+
+/* --- Entrée de chaque leçon (une seule fois, à l'arrivée) --- */
+.lesson.arrive .lesson-head,
+.lesson.arrive .lesson-body>*,
+.lesson.arrive .lesson-facts,
+.lesson.arrive .lesson-note,
+.lesson.arrive .camps,
+.lesson.arrive .lesson-timeline,
+.lesson.arrive .causes{
+  animation:aCours .95s cubic-bezier(.16,1,.3,1) both}
+.lesson.arrive .lesson-body>*:nth-child(2){animation-delay:.09s}
+.lesson.arrive .lesson-body>*:nth-child(3){animation-delay:.18s}
+.lesson.arrive .lesson-body>*:nth-child(4){animation-delay:.27s}
+.lesson.arrive .lesson-body>*:nth-child(5){animation-delay:.36s}
+@keyframes aCours{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+
+/* --- Lien cours dans le rail --- */
+.rail a.cours-link{margin-top:5px}
+.rail a.cours-link .tick::after{background:rgba(255,207,122,.8)}
+.rail a.cours-link.on .tick{background:var(--gold)}
+.rail a.cours-link.on .tick::after{background:var(--gold-2);box-shadow:0 0 12px rgba(255,232,189,.9)}
+
+/* --- Adaptations --- */
+@media (max-width:900px){
+  .cours-inner{width:calc(100vw - 48px)}
+  .sommaire ol{grid-template-columns:1fr;gap:0}
+  .camps{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .cours-inner{width:calc(100vw - 36px)}
+  .cours-head h2{font-size:clamp(32px,10vw,52px)}
+  .sommaire{padding:16px 14px}
+  .sommaire a{grid-template-columns:32px 1fr;gap:9px}
+  .sommaire li.sub a{padding-left:14px}
+  .lesson{padding-top:30px}
+  .lesson-head h3{font-size:26px}
+  .lesson-note{grid-template-columns:1fr;gap:8px}
+  .causes li{grid-template-columns:32px 1fr;gap:10px;padding:12px 13px}
 }
 
 /* ============================================================
@@ -541,9 +742,9 @@ h2 em{font-style:italic;color:var(--orange-2)}
   margin-top:18px;text-shadow:0 24px 80px rgba(0,0,0,.5)}
 .archive h2 em{color:var(--orange-2)}
 .archive-lede{max-width:58ch;margin-top:22px;font-size:clamp(14px,1.25vw,18px);
-  line-height:1.72;color:rgba(246,233,213,.8)}
+  line-height:1.72;color:rgba(246,233,213,.9)}
 .archive-sub{max-width:58ch;margin-top:14px;font-size:clamp(12px,1.03vw,14px);
-  line-height:1.72;color:rgba(246,233,213,.46)}
+  line-height:1.72;color:rgba(246,233,213,.64)}
 
 .archive-portrait{margin:0;padding:9px;border:1px solid var(--line);
   background:rgba(246,233,213,.03);box-shadow:0 30px 70px rgba(0,0,0,.45)}
@@ -561,7 +762,7 @@ h2 em{font-style:italic;color:var(--orange-2)}
   line-height:1.02;letter-spacing:-.025em;color:var(--cream);margin-top:10px}
 .ar-block-head h3 em{font-style:italic;color:var(--orange-2)}
 .ar-block-head>p{font-size:clamp(12.5px,1.05vw,14.5px);line-height:1.75;
-  color:rgba(246,233,213,.52);max-width:46ch;justify-self:end}
+  color:rgba(246,233,213,.68);max-width:46ch;justify-self:end}
 .ar-kicker{font-family:var(--mono);font-size:9px;letter-spacing:.3em;text-transform:uppercase;
   color:var(--orange-2)}
 
@@ -636,7 +837,7 @@ h2 em{font-style:italic;color:var(--orange-2)}
   color:var(--cream);background:linear-gradient(180deg,var(--cream),var(--orange-2));
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .ar-numbers span{display:block;margin-top:8px;font-size:clamp(11px,.95vw,13px);
-  line-height:1.65;color:rgba(246,233,213,.48)}
+  line-height:1.65;color:rgba(246,233,213,.64)}
 .ar-numbers em{font-style:normal;color:var(--sand)}
 
 /* --- Carte --- */
@@ -677,7 +878,7 @@ h2 em{font-style:italic;color:var(--orange-2)}
   color:var(--orange-2)}
 #mapText h4{font-family:var(--serif);font-weight:600;font-size:clamp(19px,1.75vw,24px);
   line-height:1.2;color:var(--cream);margin-bottom:9px}
-#mapText p{font-size:clamp(12px,.98vw,13.5px);line-height:1.72;color:rgba(246,233,213,.56)}
+#mapText p{font-size:clamp(12px,.98vw,13.5px);line-height:1.72;color:rgba(246,233,213,.72)}
 .map-stats{display:flex;flex-direction:column;border-top:1px solid rgba(246,233,213,.1);
   margin-top:auto}
 .map-stats div{display:flex;justify-content:space-between;gap:12px;align-items:baseline;
@@ -725,15 +926,15 @@ h2 em{font-style:italic;color:var(--orange-2)}
   text-transform:uppercase;color:var(--orange-2)}
 .spot-panel h4{font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.15;
   color:var(--cream);margin:7px 0 8px}
-.spot-panel p{font-size:12.5px;line-height:1.7;color:rgba(246,233,213,.6)}
+.spot-panel p{font-size:12.5px;line-height:1.7;color:rgba(246,233,213,.74)}
 
 /* --- Coût humain --- */
 .cost{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(24px,4vw,64px);
   margin-top:clamp(26px,4vw,40px);align-items:start}
 .cost-intro p{font-size:clamp(12.5px,1.02vw,14.5px);line-height:1.78;
-  color:rgba(246,233,213,.56)}
+  color:rgba(246,233,213,.72)}
 .cost-intro p.note{margin-top:18px;font-size:10px;line-height:1.65;
-  color:rgba(246,233,213,.3)}
+  color:rgba(246,233,213,.52)}
 .cost-toggle{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
 .cost-toggle button{font-family:var(--mono);font-size:8px;letter-spacing:.14em;
   text-transform:uppercase;color:rgba(246,233,213,.56);background:transparent;
@@ -767,7 +968,7 @@ h2 em{font-style:italic;color:var(--orange-2)}
   text-transform:uppercase;color:var(--orange-2)}
 .ar-legacy h4{font-family:var(--serif);font-weight:600;font-size:clamp(16px,1.45vw,19px);
   line-height:1.2;color:var(--cream);margin:9px 0 8px}
-.ar-legacy p{font-size:clamp(11px,.92vw,12.5px);line-height:1.7;color:rgba(246,233,213,.48)}
+.ar-legacy p{font-size:clamp(11px,.92vw,12.5px);line-height:1.7;color:rgba(246,233,213,.66)}
 
 /* --- Sources --- */
 .sources{margin-top:clamp(62px,8vw,92px);padding-top:clamp(30px,4vw,44px);
@@ -777,11 +978,11 @@ h2 em{font-style:italic;color:var(--orange-2)}
 .sources h3 em{font-style:italic;color:var(--orange-2)}
 .src-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);
   margin-top:clamp(22px,3vw,34px)}
-.src-grid p{font-size:12.5px;line-height:1.72;color:rgba(246,233,213,.5)}
+.src-grid p{font-size:12.5px;line-height:1.72;color:rgba(246,233,213,.68)}
 .src-grid p b{color:var(--sand);font-weight:400}
 .src-grid ul{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:7px}
 .src-grid li{position:relative;padding-left:16px;font-size:12px;line-height:1.55;
-  color:rgba(246,233,213,.42)}
+  color:rgba(246,233,213,.58)}
 .src-grid li::before{content:"";position:absolute;left:0;top:.65em;width:7px;height:1px;
   background:rgba(255,157,85,.6)}
 .src-grid a{color:var(--sand);text-decoration:none;border-bottom:1px solid rgba(226,199,163,.28);
@@ -796,11 +997,11 @@ h2 em{font-style:italic;color:var(--orange-2)}
 .sources details[open] summary::before{content:"− "}
 .sources details ul{list-style:none;margin-top:14px;display:grid;
   grid-template-columns:1fr 1fr;gap:8px 28px}
-.sources details li{font-size:10.5px;line-height:1.55;color:rgba(246,233,213,.4)}
+.sources details li{font-size:10.5px;line-height:1.55;color:rgba(246,233,213,.58)}
 .sources details b{color:var(--sand);font-weight:400}
 .sources details a{color:var(--orange-2);text-decoration:none}
 .sources details a:hover{text-decoration:underline}
-.fine{margin-top:22px;font-size:10.5px;line-height:1.7;color:rgba(246,233,213,.26);
+.fine{margin-top:22px;font-size:10.5px;line-height:1.7;color:rgba(246,233,213,.46);
   max-width:90ch}
 
 /* --- Révélation douce, liée au défilement --- */
@@ -831,7 +1032,7 @@ h2 em{font-style:italic;color:var(--orange-2)}
   line-height:1.05;letter-spacing:-.02em;color:var(--cream)}
 .lb-place{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;
   text-transform:uppercase;color:rgba(226,199,163,.62)}
-.lb-caption{font-size:13px;line-height:1.76;color:rgba(246,233,213,.68);margin-top:4px}
+.lb-caption{font-size:13px;line-height:1.76;color:rgba(246,233,213,.8);margin-top:4px}
 .lb-credit{font-size:10.5px;line-height:1.6;color:rgba(246,233,213,.38);
   padding-top:12px;border-top:1px solid rgba(246,233,213,.1)}
 .lb-link{margin-top:auto;align-self:flex-start;font-family:var(--mono);font-size:9px;
@@ -906,6 +1107,9 @@ html.lb-open{overflow:hidden}
   .mask>span{transform:none!important}
   .ar-reveal{opacity:1!important;transform:none!important}
   .chapter.arrive .copy>*,.finale.arrive .finale-inner>*{animation:none!important}
+  .lesson.arrive .lesson-head,.lesson.arrive .lesson-body>*,.lesson.arrive .lesson-facts,
+  .lesson.arrive .lesson-note,.lesson.arrive .camps,.lesson.arrive .lesson-timeline,
+  .lesson.arrive .causes{animation:none!important}
   .obusFall{animation:none!important;opacity:0!important}
   .photo-card img{transition:none}
   .photo-card:hover img,.photo-card:focus-visible img{transform:none}
@@ -3074,6 +3278,365 @@ html.lb-open{overflow:hidden}
   </section>
 
 <!-- ==========================================================
+     LE COURS — PLAN STRUCTURÉ
+     ========================================================== -->
+<section class="cours" id="cours" aria-labelledby="cours-title">
+  <div class="cours-inner">
+
+    <header class="cours-head ar-reveal">
+      <p class="eyebrow">Le cours · Programme d'histoire</p>
+      <h2 id="cours-title">La Grande Guerre, <em>expliquée</em>.</h2>
+      <p class="cours-lede">Le récit cinématographique peut se lire autrement : comme un <b>cours</b>. Voici le plan complet, du coup de feu de Sarajevo aux traités de paix — les dates, les deux camps, les phases du conflit, ses causes et ses conséquences.</p>
+      <p class="cours-sub">Treize parties, une seule guerre. Chaque titre du sommaire est une étape : cliquez pour y aller, ou descendez avec les flèches.</p>
+      <div class="chips">
+        <span><b>1914 — 1918</b> · quatre ans</span>
+        <span><b>60 millions</b> de mobilisés</span>
+        <span>≈ <b>10 millions</b> de soldats morts</span>
+        <span><b>4 empires</b> effondrés</span>
+      </div>
+    </header>
+
+    <nav class="sommaire ar-reveal" aria-label="Sommaire du cours">
+      <div class="sommaire-head"><span>Sommaire</span><span>13 parties</span></div>
+      <ol>
+        <li><a href="#c-intro"><b>00</b><span>Introduction</span></a></li>
+        <li><a href="#c-i"><b>I</b><span>Déclenchement de la Première Guerre mondiale</span></a></li>
+        <li><a href="#c-ii"><b>II</b><span>Les deux grands camps</span></a></li>
+        <li class="sub"><a href="#c-iia"><b>a)</b><span>La Triple-Entente</span></a></li>
+        <li class="sub"><a href="#c-iib"><b>b)</b><span>Les empires centraux</span></a></li>
+        <li><a href="#c-iii"><b>III</b><span>Le déroulement de la guerre</span></a></li>
+        <li class="sub"><a href="#c-iiia"><b>a)</b><span>Le début de la guerre</span></a></li>
+        <li class="sub"><a href="#c-iiib"><b>b)</b><span>La guerre de position</span></a></li>
+        <li class="sub"><a href="#c-iiic"><b>c)</b><span>La guerre de tranchées</span></a></li>
+        <li class="sub"><a href="#c-iiid"><b>d)</b><span>La bataille de Verdun</span></a></li>
+        <li><a href="#c-iv"><b>IV</b><span>Les causes de la guerre</span></a></li>
+        <li><a href="#c-v"><b>V</b><span>Les conséquences de la guerre</span></a></li>
+        <li><a href="#c-conclusion"><b>∞</b><span>Conclusion</span></a></li>
+      </ol>
+    </nav>
+
+    <!-- INTRODUCTION -->
+    <article class="lesson" id="c-intro" data-stop="introduction" style="--accent:var(--c-gold)">
+      <header class="lesson-head">
+        <p class="lesson-kicker">Introduction</p>
+        <h3>Un monde <em>bascule</em> en quatre ans</h3>
+      </header>
+      <div class="lesson-body">
+        <p class="lesson-lead">En <strong class="d">1914</strong>, l'Europe est la première puissance du globe : elle domine les échanges, les colonies, les sciences et les arts. Personne n'imagine qu'une crise locale des Balkans puisse embraser le continent — et pourtant, en quelques semaines, les grandes puissances entrent en guerre.</p>
+        <p>Ce conflit est la première <strong class="k">guerre industrielle</strong> de l'histoire. Les usines, les chemins de fer, la chimie, l'aviation naissante et la propagande deviennent des armes. On l'appelle « Grande Guerre » non par la gloire, mais par l'ampleur de la destruction : <strong class="f">plus de 60 millions</strong> de soldats mobilisés, <strong class="f">près de 10 millions</strong> de morts militaires, des millions de veuves et d'orphelins.</p>
+        <p>Le cours suit le plan du programme : le <strong class="k">déclenchement</strong>, les <strong class="k">deux camps</strong>, le <strong class="k">déroulement</strong> — de la guerre de mouvement à la guerre de tranchées et à Verdun —, puis les <strong class="k">causes</strong> et les <strong class="k">conséquences</strong>. Le récit cinématographique, lui, reste le fil sensible : les visages, les paysages, les silences.</p>
+      </div>
+      <ul class="lesson-facts">
+        <li><b>Durée</b> · 4 ans, 3 mois, 1 semaine</li>
+        <li><b>Théâtre</b> · Europe, Moyen-Orient, Afrique, océans</li>
+        <li><b>Nature</b> · guerre totale, guerre de masse</li>
+      </ul>
+      <aside class="lesson-note">
+        <span class="note-mark" aria-hidden="true">«</span>
+        <p><b>Guerre totale :</b> le conflit ne mobilise pas seulement les armées, mais les économies, les sciences, les médias et les populations civiles. À partir de 1915, l'arrière travaille pour le front ; à partir de 1917, les sociétés entières sont épuisées.</p>
+      </aside>
+    </article>
+
+    <!-- I. DÉCLENCHEMENT -->
+    <article class="lesson" id="c-i" data-stop="declenchement" style="--accent:var(--c-red)">
+      <header class="lesson-head">
+        <p class="lesson-kicker">I · Déclenchement</p>
+        <h3>De Sarajevo à <em>l'incendie européen</em></h3>
+      </header>
+      <div class="lesson-body">
+        <p class="lesson-lead">Le <strong class="d">28 juin 1914</strong>, à Sarajevo, l'archiduc <strong class="n">François-Ferdinand</strong>, héritier du trône d'Autriche-Hongrie, est assassiné avec son épouse Sophie. L'auteur : <strong class="n">Gavrilo Princip</strong>, un nationaliste serbe de dix-neuf ans, membre du mouvement Jeune Bosnie.</p>
+        <p>L'Autriche-Hongrie, soutenue par l'Allemagne — le fameux « chèque en blanc » du <strong class="d">5 juillet</strong> —, adresse un ultimatum à la Serbie le <strong class="d">23 juillet</strong>. La Serbie accepte presque toutes les conditions, mais refuse que des policiers austro-hongrois enquêtent sur son sol. Le <strong class="d">28 juillet 1914</strong>, Vienne déclare la guerre.</p>
+        <p>Le mécanisme des alliances s'enclenche alors en quelques jours. La Russie mobilise pour protéger la Serbie ; l'Allemagne déclare la guerre à la Russie le <strong class="d">1<sup>er</sup> août</strong>, puis à la France le <strong class="d">3 août</strong>. Le <strong class="d">4 août</strong>, l'armée allemande envahit la Belgique neutre : le Royaume-Uni entre à son tour dans le conflit.</p>
+        <p>En une semaine, un attentat local devient une <strong class="k">guerre mondiale</strong>. Ce n'est pas seulement l'engrenage des traités : c'est aussi la peur de paraître faible, la course aux armements, la conviction qu'une guerre courte est inévitable — et, chez certains dirigeants, presque souhaitable.</p>
+      </div>
+      <ul class="lesson-facts">
+        <li><b>28 juin</b> · attentat de Sarajevo</li>
+        <li><b>23 juillet</b> · ultimatum autrichien</li>
+        <li><b>28 juillet</b> · guerre à la Serbie</li>
+        <li><b>1<sup>er</sup> — 4 août</b> · généralisation</li>
+      </ul>
+      <aside class="lesson-note">
+        <span class="note-mark" aria-hidden="true">!</span>
+        <p><b>Le rôle des mobilisations :</b> en 1914, mobiliser n'est pas seulement se préparer : c'est déjà menacer. Les états-majors redoutent de perdre vingt-quatre heures. La logistique des trains et des plans de guerre prend le pas sur la diplomatie.</p>
+      </aside>
+    </article>
+
+    <!-- II. LES DEUX GRANDS CAMPS -->
+    <article class="lesson" id="c-ii" data-stop="deux-camps" style="--accent:var(--c-blue)">
+      <header class="lesson-head">
+        <p class="lesson-kicker">II · Les deux grands camps</p>
+        <h3>Deux blocs, <em>deux Europe</em></h3>
+      </header>
+      <div class="lesson-body">
+        <p class="lesson-lead">À l'été 1914, l'Europe est coupée en deux systèmes d'alliance. Chacun se croit défensif ; chacun entraîne l'autre dans la guerre. C'est cette bipolarisation qui transforme un conflit régional en conflit continental.</p>
+        <p>La <strong class="e">Triple-Alliance</strong> de <strong class="d">1882</strong> unit l'Allemagne, l'Autriche-Hongrie et l'Italie. Mais Rome, qui parle de guerre défensive, reste neutre en 1914, puis rejoint l'Entente en <strong class="d">1915</strong>. De fait, les Empires centraux se réduisent à l'Allemagne, l'Autriche-Hongrie, puis l'Empire ottoman et la Bulgarie.</p>
+        <p>Face à eux, la <strong class="e">Triple-Entente</strong> rapproche la France, la Russie et le Royaume-Uni. Autour de ce noyau gravitent la Serbie, la Belgique, le Japon, le Monténégro, puis l'Italie, la Roumanie, le Portugal, la Grèce et, en <strong class="d">1917</strong>, les États-Unis.</p>
+      </div>
+      <div class="camps">
+        <div class="camp">
+          <span class="camp-tag">Les Alliés</span>
+          <h4>La Triple-Entente</h4>
+          <ul>
+            <li>France · Royaume-Uni · Russie</li>
+            <li>Serbie · Belgique · Monténégro</li>
+            <li>Japon (1914) · Italie (1915)</li>
+            <li>Roumanie et Portugal (1916)</li>
+            <li>Grèce et États-Unis (1917)</li>
+          </ul>
+        </div>
+        <div class="camp central">
+          <span class="camp-tag">Les Empires centraux</span>
+          <h4>La Mittel-Europa</h4>
+          <ul>
+            <li>Allemagne · Autriche-Hongrie</li>
+            <li>Empire ottoman (novembre 1914)</li>
+            <li>Bulgarie (octobre 1915)</li>
+            <li>Un bloc central, entre deux fronts</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="lesson-note">
+        <span class="note-mark" aria-hidden="true">≠</span>
+        <p><b>Alliance n'est pas camp :</b> la Triple-Alliance et la Triple-Entente sont des systèmes diplomatiques. La guerre, elle, crée des camps plus larges, avec des États qui changent de bord ou entrent tardivement. L'Italie en est l'exemple le plus célèbre.</p>
+      </aside>
+    </article>
+
+    <!-- II a. TRIPLE-ENTENTE -->
+    <article class="lesson" id="c-iia" data-stop="triple-entente" style="--accent:var(--c-blue)">
+      <header class="lesson-head">
+        <p class="lesson-kicker">II · a) Les Alliés</p>
+        <h3>La <em>Triple-Entente</em></h3>
+      </header>
+      <div class="lesson-body">
+        <p class="lesson-lead">Le nom désigne le rapprochement progressif de trois puissances que tout opposait encore vingt ans plus tôt. Ce n'est pas une amitié : c'est une <strong class="k">entente</strong>, faite de calculs, de colonies et de peur de l'Allemagne.</p>
+        <p>L'alliance franco-russe est signée en <strong class="d">1892</strong> et devient effective en <strong class="d">1894</strong> : la France finance les chemins de fer russes, la Russie menace l'Allemagne à l'est. L'<strong class="k">Entente cordiale</strong> de <strong class="d">1904</strong> règle les rivalités coloniales entre Paris et Londres. En <strong class="d">1907</strong>, l'accord anglo-russe achève le triangle : c'est la Triple-Entente.</p>
+        <p>Ce n'est pas une alliance militaire aussi rigide que la Triple-Alliance : les Britanniques refusent longtemps de s'engager par écrit. Mais les états-majors coordonnent leurs plans, et la guerre cimente l'unité. Les Alliés combattent sur plusieurs fronts et finissent par confier le commandement suprême au maréchal <strong class="n">Foch</strong> en <strong class="d">1918</strong>.</p>
+        <p>Chefs et figures : <strong class="n">Joseph Joffre</strong> et <strong class="n">Philippe Pétain</strong> pour la France, <strong class="n">Douglas Haig</strong> pour le Royaume-Uni, <strong class="n">Ferdinand Foch</strong> comme généralissime, <strong class="n">John Pershing</strong> pour les États-Unis. Côté russe, l'armée se disloque après la révolution de <strong class="d">1917</strong>.</p>
+      </div>
+      <ul class="lesson-facts">
+        <li><b>1892</b> · alliance franco-russe</li>
+        <li><b>1904</b> · Entente cordiale</li>
+        <li><b>1907</b> · triangle formé</li>
+        <li><b>1918</b> · commandement unique</li>
+      </ul>
+      <aside class="lesson-note">
+        <span class="note-mark" aria-hidden="true">+</span>
+        <p><b>Une guerre mondiale :</b> le Royaume-Uni mobilise ses dominions (Canada, Australie, Nouvelle-Zélande, Afrique du Sud) et l'Inde ; la France engage plus de <strong class="f">500 000</strong> soldats coloniaux. Le conflit se joue aussi au Moyen-Orient et en Afrique.</p>
+      </aside>
+    </article>
+
+    <!-- II b. EMPIRES CENTRAUX -->
+    <article class="lesson" id="c-iib" data-stop="empires-centraux" style="--accent:var(--c-red)">
+      <header class="lesson-head">
+        <p class="lesson-kicker">II · b) Les Empires centraux</p>
+        <h3>La <em>Mittel-Europa</em></h3>
+      </header>
+      <div class="lesson-body">
+        <p class="lesson-lead">« Empires centraux » traduit l'allemand <strong class="k">Mittelmächte</strong> : les puissances du centre de l'Europe, prises entre la France et la Russie. Leur position est stratégiquement dangereuse — et militairement redoutable.</p>
+        <p>L'<strong class="c">Allemagne</strong> de <strong class="n">Guillaume II</strong> est la première puissance industrielle du continent. Elle soutient l'<strong class="c">Autriche-Hongrie</strong>, un empire multinational fragile, miné par les nationalismes. L'<strong class="c">Empire ottoman</strong> rejoint les Empires centraux en <strong class="d">novembre 1914</strong>, la <strong class="c">Bulgarie</strong> en <strong class="d">octobre 1915</strong>.</p>
+        <p>Leur force : une armée allemande mieux entraînée, des lignes intérieures, une artillerie lourde et une industrie puissante. Leur faiblesse : l'<strong class="k">encerclement</strong> et l'épuisement. L'Autriche-Hongrie se désagrège en <strong class="d">1918</strong> ; l'Allemagne, à bout de forces, signe l'armistice le <strong class="d">11 novembre 1918</strong>.</p>
+        <p>Figures : <strong class="n">Helmuth von Moltke</strong>, puis <strong class="n">Erich von Falkenhayn</strong>, puis <strong class="n">Paul von Hindenburg</strong> et <strong class="n">Erich Ludendorff</strong> pour l'Allemagne ; <strong class="n">Conrad von Hötzendorf</strong> pour l'Autriche-Hongrie.</p>
+      </div>
+      <ul class="lesson-facts">
+        <li><b>Allemagne</b> · puissance industrielle</li>
+        <li><b>Autriche-Hongrie</b> · empire multinational</li>
+        <li><b>1914</b> · Empire ottoman</li>
+        <li><b>1915</b> · Bulgarie</li>
+      </ul>
+      <aside class="lesson-note">
+        <span class="note-mark" aria-hidden="true">✕</span>
+        <p><b>Le poids de l'Allemagne :</b> les Empires centraux sont en réalité dominés par Berlin. L'Autriche-Hongrie dépend de son allié, l'Empire ottoman reçoit son aide, la Bulgarie suit ses intérêts balkaniques. Cette coalition n'est pas un bloc homogène.</p>
+      </aside>
+    </article>
+
+    <!-- III. DÉROULEMENT -->
+    <article class="lesson" id="c-iii" data-stop="deroulement" style="--accent:var(--c-gold)">
+      <header class="lesson-head">
+        <p class="lesson-kicker">III · Le déroulement</p>
+        <h3>Quatre ans de <em>feu</em></h3>
+      </header>
+      <div class="lesson-body">
+        <p class="lesson-lead">La guerre change de visage en quelques mois : mouvement, puis blocage, puis usure. Les dates ne sont pas une simple liste : elles racontent la manière dont la guerre s'enfonce dans les sociétés.</p>
+        <p><strong class="d">1914</strong> : l'illusion de la guerre courte. <strong class="d">1915-1916</strong> : la guerre de position et les grandes offensives inutiles. <strong class="d">1917</strong> : l'année du doute, des mutineries et des révolutions. <strong class="d">1918</strong> : la dernière poussée allemande, puis la contre-offensive alliée et l'armistice.</p>
+      </div>
+      <ol class="lesson-timeline">
+        <li><b>1914</b><span>Guerre de mouvement : la Marne arrête l'invasion allemande, puis le front se fige.</span></li>
+        <li><b>1915</b><span>Guerre de position : gaz à Ypres, offensives en Artois et en Champagne, débarquement des Dardanelles.</span></li>
+        <li><b>1916</b><span>Guerre d'usure : Verdun et la Somme, deux batailles pour épuiser l'adversaire.</span></li>
+        <li><b>1917</b><span>Le doute : entrée des États-Unis, révolutions russes, mutineries françaises, Passchendaele.</span></li>
+        <li><b>1918</b><span>La fin : offensives allemandes du printemps, contre-offensive alliée, armistice du 11 novembre.</span></li>
+      </ol>
+      <aside class="lesson-note">
+        <span class="note-mark" aria-hidden="true">≈</span>
+        <p><b>Une guerre de matériel :</b> en 1914, on compte les hommes ; en 1918, on compte les obus, les mitrailleuses, les chars et les avions. La production industrielle devient un facteur décisif du résultat.</p>
+      </aside>
+    </article>
+
+    <!-- III a. DÉBUT -->
+    <article class="lesson" id="c-iiia" data-stop="debut-de-guerre" style="--accent:var(--c-blue)">
+      <header class="lesson-head">
+        <p class="lesson-kicker">III · a) Le début</p>
+        <h3>1914 : la <em>guerre de mouvement</em></h3>
+      </header>
+      <div class="lesson-body">
+        <p class="lesson-lead">Chacun croit gagner en quelques semaines. Les plans sont offensifs, les soldats partent en pantalon garance, les trains sont bondés. C'est la guerre joyeuse des premiers jours — avant les premières défaites.</p>
+        <p>Le <strong class="k">plan Schlieffen</strong> allemand prévoit de battre la France en six semaines en passant par la Belgique, avant de se retourner contre la Russie. La France applique le <strong class="k">plan XVII</strong> : attaquer en Alsace-Lorraine. Les deux échouent. Les Allemands sont arrêtés dès la Belgique, puis repoussés à l'est de Paris.</p>
+        <p>Du <strong class="d">6 au 12 septembre 1914</strong>, la <strong class="k">bataille de la Marne</strong> arrête l'invasion : les taxis parisiens transportent des réservistes, <strong class="n">Joffre</strong> tient. Puis les deux armées courent vers la mer : c'est la « <strong class="k">course à la mer</strong> ». À la fin de l'automne, le front s'étend de la Suisse à la mer du Nord.</p>
+        <p>Partout, les pertes sont déjà considérables : la bataille des frontières, la Marne, l'Yser, le premier Ypres. L'idée d'une guerre courte s'effondre en quelques semaines.</p>
+      </div>
+      <ul class="lesson-facts">
+        <li><b>6 — 12 sept. 1914</b> · la Marne</li>
+        <li><b>Plan XVII</b> · offensive française</li>
+        <li><b>Plan Schlieffen</b> · contournement par la Belgique</li>
+        <li><b>Automne</b> · course à la mer</li>
+      </ul>
+      <aside class="lesson-note">
+        <span class="note-mark" aria-hidden="true">→</span>
+        <p><b>Le premier tournant :</b> la Marne n'est pas une victoire décisive, mais elle sauve Paris et détruit le plan allemand de guerre courte. À partir de là, l'Allemagne doit combattre sur deux fronts.</p>
+      </aside>
+    </article>
+
+    <!-- III b. GUERRE DE POSITION -->
+    <article class="lesson" id="c-iiib" data-stop="guerre-de-position" style="--accent:var(--c-gold)">
+      <header class="lesson-head">
+        <p class="lesson-kicker">III · b) La guerre de position</p>
+        <h3>Le front se <em>fige</em></h3>
+      </header>
+      <div class="lesson-body">
+        <p class="lesson-lead">À partir de l'automne <strong class="d">1914</strong>, les armées s'enterrent. La ligne de front se fige sur environ <strong class="f">700 kilomètres</strong>, du littoral belge à la frontière suisse. La guerre de mouvement est terminée.</p>
+        <p>La <strong class="k">guerre de position</strong>, c'est l'échec du mouvement : chaque offensive se brise sur les mitrailleuses, les barbelés et l'artillerie. Les généraux cherchent la percée par la masse et le feu : c'est la <strong class="k">guerre d'usure</strong>, qui vise moins à conquérir qu'à faire mourir plus que l'adversaire.</p>
+        <p>Les batailles deviennent des noms de boucherie : <strong class="n">Ypres</strong>, <strong class="n">Artois</strong>, <strong class="n">Champagne</strong>, <strong class="n">la Somme</strong>, <strong class="n">Verdun</strong>. On compte les morts au mètre de terrain gagné — parfois moins. En <strong class="d">1915</strong>, les offensives françaises et britanniques ne percent pas ; en <strong class="d">1916</strong>, Verdun et la Somme épuisent les deux camps.</p>
+        <p>Pour tenir, il faut produire : obus, canons, mitrailleuses, avions. L'<strong class="k">arrière</strong> devient un front économique. Les femmes remplacent les hommes dans les usines, les munitionnettes fabriquent les obus qui tuent les soldats d'en face.</p>
+      </div>
+      <ul class="lesson-facts">
+        <li><b>≈ 700 km</b> de front</li>
+        <li><b>1915</b> · Artois, Champagne</li>
+        <li><b>1916</b> · Verdun, la Somme</li>
+        <li><b>Guerre d'usure</b></li>
+      </ul>
+      <aside class="lesson-note">
+        <span class="note-mark" aria-hidden="true">∞</span>
+        <p><b>Position, pas immobilité :</b> le front bouge peu, mais la violence ne s'arrête jamais. Les secteurs « calmes » connaissent les tirs de harcèlement, les gaz, les raids et les travaux de nuit. L'usure est quotidienne.</p>
+      </aside>
+    </article>
+
+    <!-- III c. GUERRE DE TRANCHÉES -->
+    <article class="lesson" id="c-iiic" data-stop="guerre-de-tranchees" style="--accent:var(--c-red)">
+      <header class="lesson-head">
+        <p class="lesson-kicker">III · c) La guerre de tranchées</p>
+        <h3>Vivre et mourir dans la <em>boue</em></h3>
+      </header>
+      <div class="lesson-body">
+        <p class="lesson-lead">La tranchée n'est pas un trou : c'est une ville de boue, organisée en rues, en postes, en abris et en cimetières improvisés. Elle est le cadre ordinaire de la vie du soldat entre <strong class="d">1914</strong> et <strong class="d">1918</strong>.</p>
+        <p>Trois lignes : la <strong class="k">première ligne</strong>, face à l'ennemi ; la <strong class="k">ligne de soutien</strong> ; la <strong class="k">ligne de réserve</strong>. Entre les deux camps, le <strong class="k">no man's land</strong>, labouré d'obus, hérissé de fils de fer. La journée est réglée par les relèves, les corvées, les tirs de barrage et la peur.</p>
+        <p>Le quotidien : la boue, les rats, les poux, la soif, les gaz (<strong class="d">22 avril 1915</strong>, première grande attaque au chlore à Ypres), les obus qui enterrent vivants, les « <strong class="k">gueules cassées</strong> ». Les permissionnaires rapportent l'illusion d'une vie normale. En <strong class="d">1917</strong>, après l'offensive Nivelle, des <strong class="k">mutineries</strong> éclatent : les soldats refusent de monter à l'assaut, pas de défendre le pays.</p>
+        <p>Les poilus écrivent, dessinent, photographient parfois. Ces traces — lettres, carnets, clichés interdits — sont devenues des sources essentielles pour l'historien.</p>
+      </div>
+      <ul class="lesson-facts">
+        <li><b>22 avril 1915</b> · gaz à Ypres</li>
+        <li><b>1916</b> · casque Adrian</li>
+        <li><b>1917</b> · mutineries</li>
+        <li><b>No man's land</b></li>
+      </ul>
+      <aside class="lesson-note">
+        <span class="note-mark" aria-hidden="true">☓</span>
+        <p><b>Une expérience de masse :</b> des millions d'hommes partagent la même condition. La tranchée crée une culture commune — argot, solidarité, humour noir — mais aussi des traumatismes durables : « <strong class="k">névrose de guerre</strong> », insomnies, alcool, violence.</p>
+      </aside>
+    </article>
+
+    <!-- III d. VERDUN -->
+    <article class="lesson" id="c-iiid" data-stop="verdun" style="--accent:var(--c-gold)">
+      <header class="lesson-head">
+        <p class="lesson-kicker">III · d) La bataille de Verdun</p>
+        <h3>Verdun, <em>l'os de la France</em></h3>
+      </header>
+      <div class="lesson-body">
+        <p class="lesson-lead">Du <strong class="d">21 février au 18 décembre 1916</strong>, la bataille de Verdun devient le symbole de la guerre d'usure — et de la résistance française. Dix mois de feu sur un terrain de quelques kilomètres.</p>
+        <p>Le chef d'état-major allemand <strong class="n">Erich von Falkenhayn</strong> veut « <strong class="k">saigner à blanc</strong> » l'armée française : frapper un point symbolique que la France défendra jusqu'au bout. Les Allemands attaquent sur la rive droite de la Meuse ; le <strong class="n">fort de Douaumont</strong> tombe le <strong class="d">25 février</strong>.</p>
+        <p>Le général <strong class="n">Pétain</strong> organise la résistance : la « <strong class="k">Voie sacrée</strong> », route unique reliant Bar-le-Duc à Verdun, achemine hommes et munitions jour et nuit. La bataille dure dix mois, par rotations d'unités : presque toute l'armée française y passe. En juillet, la Somme oblige les Allemands à desserrer l'étau.</p>
+        <p>Bilan : environ <strong class="f">300 000 morts et disparus</strong>, plus de <strong class="f">700 000</strong> blessés ou tués dans les deux camps selon les estimations. Le terrain conquis est dérisoire. Verdun ne décide rien militairement, mais devient le <strong class="k">lieu de mémoire</strong> de la guerre.</p>
+      </div>
+      <ul class="lesson-facts">
+        <li><b>21 fév. — 18 déc. 1916</b></li>
+        <li><b>≈ 300 000</b> morts et disparus</li>
+        <li><b>Voie sacrée</b> · Bar-le-Duc — Verdun</li>
+        <li><b>Douaumont</b> · fort tombé le 25 février</li>
+      </ul>
+      <aside class="lesson-note">
+        <span class="note-mark" aria-hidden="true">✶</span>
+        <p><b>« On ne passe pas » :</b> la formule, associée à Pétain, résume le mythe de Verdun. Après la guerre, le site devient un sanctuaire : ossuaire de Douaumont, nécropole, forêt replantée. La mémoire y est aussi politique.</p>
+      </aside>
+    </article>
+
+    <!-- IV. CAUSES -->
+    <article class="lesson" id="c-iv" data-stop="causes" style="--accent:var(--c-red)">
+      <header class="lesson-head">
+        <p class="lesson-kicker">IV · Les causes</p>
+        <h3>Pourquoi la guerre ? <em>Cinq engrenages</em></h3>
+      </header>
+      <div class="lesson-body">
+        <p class="lesson-lead">Aucune cause unique : la guerre résulte de la rencontre entre des tensions anciennes et une crise immédiate. Les historiens parlent d'un <strong class="k">engrenage</strong>, où chaque décision réduit l'espace de la diplomatie.</p>
+      </div>
+      <ol class="causes">
+        <li><b>Nationalismes et revanchisme</b><span>La perte de l'Alsace-Lorraine en <strong class="d">1871</strong> nourrit en France un désir de revanche. En Allemagne, le pangermanisme ; dans les Balkans, le panslavisme et les nationalismes serbe, croate, tchèque. Chaque peuple veut son État, chaque État veut s'agrandir.</span></li>
+        <li><b>Impérialisme et rivalités coloniales</b><span>Les empires se disputent l'Afrique et l'Asie. Les crises marocaines de <strong class="d">1905</strong> et <strong class="d">1911</strong> opposent la France et l'Allemagne ; la question des Balkans et du chemin de fer de Bagdad attise les tensions.</span></li>
+        <li><b>Course aux armements</b><span>L'Allemagne lance sa flotte de <strong class="k">dreadnoughts</strong> ; le Royaume-Uni répond. Les budgets militaires explosent, le service militaire s'allonge, les plans de guerre se précisent. On se prépare si bien à la guerre qu'elle devient pensable.</span></li>
+        <li><b>Système des alliances</b><span>Les blocs de <strong class="d">1882</strong> et <strong class="d">1907</strong> transforment un conflit local en conflit général. Les états-majors disposent de plans automatiques ; la mobilisation russe déclenche la mobilisation allemande.</span></li>
+        <li><b>Poudrière balkanique</b><span>Les guerres balkaniques de <strong class="d">1912-1913</strong> ont déjà redessiné la région. L'Autriche-Hongrie craint la Serbie ; la Russie soutient Belgrade. Sarajevo allume la mèche posée sur la poudre.</span></li>
+      </ol>
+      <aside class="lesson-note">
+        <span class="note-mark" aria-hidden="true">?</span>
+        <p><b>Le débat des historiens :</b> l'historien allemand <strong class="n">Fritz Fischer</strong> (1961) insiste sur la responsabilité de l'Allemagne ; <strong class="n">Christopher Clark</strong> (<em>Les Somnambules</em>, 2012) décrit des dirigeants qui avancent sans comprendre. Le traité de Versailles inscrira la responsabilité allemande dans son article <strong class="f">231</strong> — une décision lourde de conséquences.</p>
+      </aside>
+    </article>
+
+    <!-- V. CONSÉQUENCES -->
+    <article class="lesson" id="c-v" data-stop="consequences" style="--accent:var(--c-blue)">
+      <header class="lesson-head">
+        <p class="lesson-kicker">V · Les conséquences</p>
+        <h3>Une guerre qui <em>refait le monde</em></h3>
+      </header>
+      <div class="lesson-body">
+        <p class="lesson-lead">En <strong class="d">1918</strong>, l'Europe sort ruinée, endettée, peuplée de veuves et d'orphelins. Quatre empires ont disparu ; la carte du monde est redessinée. La paix signée n'est pas une réconciliation.</p>
+        <p><strong class="k">Bilan humain :</strong> environ <strong class="f">10 millions</strong> de soldats morts, <strong class="f">20 millions</strong> de blessés, des millions de civils touchés. Les « gueules cassées » et les invalides rappellent la guerre dans chaque village. La grippe espagnole de <strong class="d">1918-1919</strong> aggrave encore le bilan.</p>
+        <p><strong class="k">Bouleversement politique :</strong> les empires allemand, austro-hongrois, russe et ottoman s'effondrent. De nouveaux États apparaissent — Pologne, Tchécoslovaquie, Yougoslavie, États baltes, Finlande, Hongrie, Autriche. La <strong class="k">Société des Nations</strong> est créée en <strong class="d">1920</strong>, mais les États-Unis n'y adhèrent pas.</p>
+        <p><strong class="k">Traités :</strong> Versailles avec l'Allemagne (<strong class="d">28 juin 1919</strong>), Saint-Germain avec l'Autriche, Trianon avec la Hongrie, Neuilly avec la Bulgarie, Sèvres avec l'Empire ottoman — révisé à Lausanne en <strong class="d">1923</strong>. L'Allemagne est déclarée responsable, perd des territoires, paie des réparations et réduit son armée.</p>
+        <p><strong class="k">Économie et société :</strong> dettes, inflation, reconstruction. Les femmes ont remplacé les hommes à l'usine et aux champs ; leur rôle accélère le droit de vote (Royaume-Uni <strong class="d">1918</strong>, Allemagne <strong class="d">1919</strong>, États-Unis <strong class="d">1920</strong>, France <strong class="d">1944</strong>). Les anciens combattants s'organisent, le pacifisme grandit, la mémoire se monumentalisera.</p>
+        <p><strong class="k">Vers la guerre suivante :</strong> l'humiliation allemande, les réparations, la crise de <strong class="d">1929</strong>, l'instabilité des nouveaux États et la montée des fascismes préparent <strong class="d">1939</strong>. La Grande Guerre n'est pas seulement une rupture : elle est aussi une promesse de violence.</p>
+      </div>
+      <ul class="lesson-facts">
+        <li><b>≈ 10 M</b> de morts militaires</li>
+        <li><b>4 empires</b> disparus</li>
+        <li><b>1919</b> · traité de Versailles</li>
+        <li><b>1920</b> · Société des Nations</li>
+      </ul>
+      <aside class="lesson-note">
+        <span class="note-mark" aria-hidden="true">↯</span>
+        <p><b>Une paix fragile :</b> le traité de Versailles est signé le 28 juin 1919, cinq ans jour pour jour après Sarajevo. Les Allemands parlent de « Diktat » ; les Français le jugent trop doux. Personne n'est satisfait — et le mot « revanche » circule déjà.</p>
+      </aside>
+    </article>
+
+    <!-- CONCLUSION -->
+    <article class="lesson" id="c-conclusion" data-stop="conclusion" style="--accent:var(--c-gold)">
+      <header class="lesson-head">
+        <p class="lesson-kicker">Conclusion</p>
+        <h3>Une paix <em>fragile</em>, une mémoire vivante</h3>
+      </header>
+      <div class="lesson-body">
+        <p class="lesson-lead">La Grande Guerre ne s'arrête pas au <strong class="d">11 novembre 1918</strong> : elle continue dans les traités, les deuils, les monuments et les mémoires. Elle a détruit l'idée d'une Europe civilisée et sûre d'elle.</p>
+        <p>Elle a fait de la <strong class="k">violence de masse</strong> une expérience ordinaire. Elle a préparé, par ses rancunes et ses instabilités, la guerre suivante — mais elle a aussi nourri un pacifisme et une conscience internationale durables.</p>
+        <p>Retenir le cours, c'est retenir des <strong class="d">dates</strong>, des <strong class="e">camps</strong>, des <strong class="k">phases</strong>, des <strong class="k">causes</strong> et des <strong class="k">conséquences</strong>. Comprendre, c'est aussi se souvenir que derrière chaque ligne du programme, il y a des hommes — et des femmes — qui l'ont vécue.</p>
+      </div>
+      <aside class="lesson-note">
+        <span class="note-mark" aria-hidden="true">✿</span>
+        <p><b>Se souvenir :</b> le coquelicot, le bleuet, l'armistice du 11 novembre, les monuments aux morts de chaque commune, l'ossuaire de Douaumont. La mémoire n'est pas l'histoire : elle choisit, elle célèbre, elle oublie parfois. L'historien, lui, cherche à comprendre.</p>
+      </aside>
+    </article>
+
+  </div>
+</section>
+
+<!-- ==========================================================
      CAHIER D'ARCHIVES
      ========================================================== -->
 <section class="archive" id="archives" aria-labelledby="archives-title">
@@ -3591,9 +4154,11 @@ html.lb-open{overflow:hidden}
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const rail = document.querySelector('.rail');
   const chapters = Array.from(document.querySelectorAll('.chapter'));
+  const coursSection = document.getElementById('cours');
   const archiveSection = document.getElementById('archives');
   const dots = [];
   let archiveLink = null;
+  let coursLink = null;
 
   /* Révélations liées au défilement — aucun seuil, aucune temporisation.
      Chaque élément avance avec le scroll, dès son premier pixel visible. */
@@ -3622,6 +4187,20 @@ html.lb-open{overflow:hidden}
       dots.push(a);
     });
 
+    if (coursSection){
+      coursLink = document.createElement('a');
+      coursLink.href = '#cours';
+      coursLink.className = 'cours-link';
+      const clbl = document.createElement('span');
+      clbl.className = 'lbl';
+      clbl.textContent = 'Cours';
+      const ctick = document.createElement('span');
+      ctick.className = 'tick';
+      coursLink.appendChild(clbl);
+      coursLink.appendChild(ctick);
+      rail.appendChild(coursLink);
+    }
+
     if (archiveSection){
       archiveLink = document.createElement('a');
       archiveLink.href = '#archives';
@@ -3642,6 +4221,8 @@ html.lb-open{overflow:hidden}
 
   const pbar = document.getElementById('pbar');
   const chNum = document.getElementById('chNum');
+  const chTotal = document.querySelector('.chapter-count span');
+  const chTotalDefault = chTotal ? chTotal.textContent : '';
   const cue = document.querySelector('.cue');
 
   /* ---------------------------------------------------------
@@ -3659,6 +4240,7 @@ html.lb-open{overflow:hidden}
       return {r, h: ch.offsetHeight};
     });
     const arRect = archiveSection ? archiveSection.getBoundingClientRect() : null;
+    const coursRect = coursSection ? coursSection.getBoundingClientRect() : null;
     const copyTops = reduce ? null : copyReveals.map(item => item.el.getBoundingClientRect().top);
     const arTops = reduce ? null : arReveals.map(el => el.getBoundingClientRect().top);
 
@@ -3707,13 +4289,17 @@ html.lb-open{overflow:hidden}
     });
     if (idx === -1) idx = (window.scrollY > vh * 0.5) ? chapters.length - 1 : 0;
     dots.forEach((d, i) => d.classList.toggle('on', i === idx));
-    chNum.textContent = idx === 0 ? '00' : String(idx).padStart(2, '0');
 
-    if (archiveLink && arRect){
-      const inArchive = arRect.top < vh * 0.5 && arRect.bottom > vh * 0.5;
-      archiveLink.classList.toggle('on', inArchive);
-      if (inArchive) dots.forEach(d => d.classList.remove('on'));
-    }
+    const inCours = !!(coursLink && coursRect && coursRect.top < vh * 0.5 && coursRect.bottom > vh * 0.5);
+    if (coursLink) coursLink.classList.toggle('on', inCours);
+    if (inCours) dots.forEach(d => d.classList.remove('on'));
+
+    const inArchive = !!(archiveLink && arRect && arRect.top < vh * 0.5 && arRect.bottom > vh * 0.5);
+    if (archiveLink) archiveLink.classList.toggle('on', inArchive);
+    if (inArchive) dots.forEach(d => d.classList.remove('on'));
+
+    chNum.textContent = inArchive ? 'A' : (inCours ? 'C' : (idx === 0 ? '00' : String(idx).padStart(2, '0')));
+    if (chTotal) chTotal.textContent = inArchive ? '/ archives' : (inCours ? '/ cours' : chTotalDefault);
 
     if (cue) cue.style.opacity = window.scrollY > vh * 0.3 ? '0' : '1';
 
@@ -3736,6 +4322,10 @@ html.lb-open{overflow:hidden}
   --------------------------------------------------------- */
   const stops = [];
   chapters.forEach(ch => stops.push({el: ch, ch}));
+  if (coursSection){
+    stops.push({el: coursSection});
+    coursSection.querySelectorAll('.lesson').forEach(el => stops.push({el}));
+  }
   if (archiveSection){
     stops.push({el: archiveSection});
     ['galerie', 'carte', 'tranchee', 'cout', 'sources'].forEach(id => {
@@ -3776,6 +4366,9 @@ html.lb-open{overflow:hidden}
         seen.add(s.ch);
         s.ch.classList.add('arrive');    /* entrée jouée une seule fois */
       }
+    } else if (s.el && s.el.classList.contains('lesson') && !reduce && !seen.has(s.el)){
+      seen.add(s.el);
+      s.el.classList.add('arrive');
     } else if (s.el === fin && !reduce && !seen.has(fin)){
       seen.add(fin);
       fin.classList.add('arrive');
@@ -3813,6 +4406,19 @@ html.lb-open{overflow:hidden}
   /* Le rail saute directement, sans défilement animé */
   if (rail){
     rail.addEventListener('click', e => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const el = document.getElementById(a.getAttribute('href').slice(1));
+      const i = stops.findIndex(s => s.el === el);
+      if (i < 0) return;
+      e.preventDefault();
+      goToStop(i);
+    });
+  }
+
+  /* Le sommaire du cours saute directement, comme le rail */
+  if (coursSection){
+    coursSection.addEventListener('click', e => {
       const a = e.target.closest('a[href^="#"]');
       if (!a) return;
       const el = document.getElementById(a.getAttribute('href').slice(1));
