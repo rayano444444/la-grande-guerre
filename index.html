@@ -721,6 +721,177 @@ h2 em{font-style:italic;color:var(--orange-2)}
 }
 
 /* ============================================================
+   PANNEAU D'OUVERTURE — ÉTABLISSEMENT ET AUTEURS
+   ============================================================ */
+.hero-school{display:inline-flex;flex-direction:column;align-items:center;gap:12px;
+  margin:0 auto clamp(20px,3vh,30px);padding:14px 22px 12px;
+  border:1px solid rgba(246,233,213,.16);
+  background:linear-gradient(150deg,rgba(6,10,18,.72),rgba(6,10,18,.34));
+  box-shadow:0 24px 70px rgba(0,0,0,.45);backdrop-filter:blur(6px)}
+.school-logo{display:block;width:auto;height:clamp(28px,3.4vw,40px);
+  background:#fff;padding:6px 10px;border-radius:2px;
+  box-shadow:0 6px 22px rgba(0,0,0,.45)}
+.hero-school p{font-family:var(--mono);font-size:9px;letter-spacing:.24em;
+  text-transform:uppercase;color:rgba(246,233,213,.66);line-height:1.9}
+.hero-school p b{color:var(--sand);font-weight:400;letter-spacing:.16em}
+.hero-school .roles{color:rgba(246,233,213,.42);font-size:8px;letter-spacing:.22em}
+.hero-school .sep{width:84px;height:1px;background:linear-gradient(90deg,transparent,rgba(240,121,54,.7),transparent)}
+
+/* Écrans très bas (téléphone en paysage) : le panneau se compacte */
+@media (max-height:620px){
+  .hero-school{padding:8px 12px 7px;gap:5px;margin-bottom:12px}
+  .school-logo{height:20px;padding:4px 7px}
+  .hero-school p{font-size:7px;letter-spacing:.16em;line-height:1.5}
+  .hero-school .roles,.hero-school .sep{display:none}
+  #s0 .chips{display:none}
+  #s0 .lead{font-size:13px;margin-top:12px}
+}
+
+/* ============================================================
+   QUIZ FINAL
+   ============================================================ */
+.quiz{position:relative;z-index:2;padding:clamp(76px,11vh,130px) 0 clamp(64px,9vh,110px);
+  background:
+    radial-gradient(900px 640px at 84% 0%,rgba(90,169,255,.12),transparent 62%),
+    radial-gradient(820px 620px at 8% 90%,rgba(198,43,31,.14),transparent 62%),
+    linear-gradient(180deg,#05080f 0%,#070d17 46%,#0a0810 100%);
+  border-top:1px solid rgba(246,233,213,.12)}
+.quiz-inner{width:min(880px,calc(100vw - clamp(40px,10vw,120px)));margin:0 auto}
+.quiz ::selection{background:var(--orange);color:#160b04}
+.quiz h2{font-size:clamp(32px,4.6vw,62px);line-height:1;letter-spacing:-.035em;margin-top:14px}
+.quiz h2 em{font-style:italic;color:var(--gold);text-shadow:0 0 50px rgba(255,207,122,.28)}
+.quiz-lede{max-width:60ch;margin-top:16px;font-size:clamp(13px,1.1vw,15.5px);
+  line-height:1.8;color:rgba(246,233,213,.82)}
+.quiz-meter{position:relative;height:2px;margin-top:26px;background:rgba(246,233,213,.14);overflow:hidden}
+.quiz-meter span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--gold));
+  transition:width .5s cubic-bezier(.16,1,.3,1)}
+.quiz-progress{margin-top:10px;font-family:var(--mono);font-size:8.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:rgba(246,233,213,.5)}
+
+.quiz-list{display:flex;flex-direction:column;gap:clamp(12px,1.6vw,18px);margin-top:clamp(26px,3.4vw,38px)}
+.q-card{border:1px solid rgba(246,233,213,.12);background:rgba(246,233,213,.022);
+  padding:clamp(16px,2.2vw,24px);transition:border-color .4s,background .4s}
+.q-card.answered{border-color:rgba(246,233,213,.18);background:rgba(246,233,213,.035)}
+.q-top{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:baseline}
+.q-num{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--gold)}
+.q-text{font-family:var(--serif);font-weight:600;font-size:clamp(15px,1.4vw,19px);
+  line-height:1.35;color:var(--cream)}
+.q-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;
+  padding-left:46px}
+.q-opt{position:relative;display:flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;line-height:1.5;
+  text-align:left;color:rgba(246,233,213,.8);background:rgba(6,10,18,.5);
+  border:1px solid rgba(246,233,213,.16);padding:11px 12px;cursor:pointer;
+  transition:border-color .25s,color .25s,background .25s,transform .25s}
+.q-opt::before{content:"";flex:0 0 auto;width:7px;height:7px;border-radius:50%;
+  border:1px solid currentColor;opacity:.6}
+.q-opt:hover:not(:disabled),.q-opt:focus-visible:not(:disabled){
+  border-color:rgba(255,207,122,.65);color:#fff4e2;background:rgba(240,121,54,.12);
+  transform:translateY(-1px);outline:none}
+.q-opt:disabled{cursor:default}
+.q-opt.correct{border-color:var(--gold);color:var(--gold-2);background:rgba(255,207,122,.14)}
+.q-opt.correct::before{background:var(--gold);border-color:var(--gold);opacity:1;
+  box-shadow:0 0 10px rgba(255,207,122,.9)}
+.q-opt.wrong{border-color:rgba(255,111,92,.8);color:#ffb3a6;background:rgba(198,43,31,.16)}
+.q-opt.wrong::before{border-color:#ff6f5c;opacity:1}
+.q-opt.faded{opacity:.4}
+.q-exp{margin:14px 0 0 46px;padding-left:12px;border-left:2px solid var(--gold);
+  font-size:clamp(11.5px,.95vw,13px);line-height:1.7;color:rgba(246,233,213,.78)}
+.q-exp b{color:var(--gold);font-weight:600}
+
+.quiz-end{display:flex;flex-direction:column;align-items:center;gap:10px;
+  margin-top:clamp(26px,3.4vw,38px);padding:clamp(22px,3vw,34px);
+  border:1px solid rgba(246,233,213,.16);
+  background:linear-gradient(160deg,rgba(255,207,122,.1),rgba(246,233,213,.02));
+  text-align:center}
+.quiz-end[hidden]{display:none}
+.quiz-score-label{font-family:var(--mono);font-size:8.5px;letter-spacing:.28em;
+  text-transform:uppercase;color:rgba(246,233,213,.55)}
+.quiz-score{font-family:var(--serif);font-weight:900;font-size:clamp(46px,6vw,76px);
+  line-height:.9;letter-spacing:-.04em;color:var(--cream)}
+.quiz-score span{font-size:.34em;letter-spacing:.1em;color:rgba(246,233,213,.45);
+  font-family:var(--mono);font-weight:400;margin-left:6px;vertical-align:super}
+.quiz-verdict{max-width:52ch;font-size:clamp(12.5px,1.05vw,14.5px);line-height:1.75;
+  color:rgba(246,233,213,.8)}
+.quiz-end .row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px}
+.quiz-end button{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;
+  text-transform:uppercase;padding:11px 16px;cursor:pointer;
+  border:1px solid rgba(246,233,213,.2);background:transparent;color:var(--sand);
+  transition:border-color .3s,color .3s,background .3s}
+.quiz-end button:hover{border-color:var(--orange);color:var(--orange-2)}
+.quiz-end .primary{background:rgba(240,121,54,.16);border-color:var(--orange);color:var(--orange-2)}
+
+/* Remerciements */
+.thanks-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;
+  justify-content:center;padding:24px;overflow-y:auto}
+.thanks-modal[hidden]{display:none}
+.thanks-backdrop{position:absolute;inset:0;background:rgba(3,5,10,.86);
+  backdrop-filter:blur(10px)}
+.thanks-card{position:relative;width:min(660px,100%);margin:auto;
+  padding:clamp(28px,4.4vw,54px) clamp(24px,4vw,52px);
+  border:1px solid rgba(246,233,213,.2);
+  background:
+    radial-gradient(600px 400px at 50% -10%,rgba(240,121,54,.14),transparent 62%),
+    linear-gradient(170deg,#0a101c,#070a11 62%,#0b0708);
+  box-shadow:0 50px 140px rgba(0,0,0,.7);text-align:center;
+  animation:thanksIn .6s cubic-bezier(.16,1,.3,1) both}
+.thanks-card::before{content:"";position:absolute;inset:0;pointer-events:none;
+  border:1px solid rgba(255,207,122,.14);margin:6px}
+.thanks-kicker{font-family:var(--mono);font-size:8.5px;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--orange-2)}
+.thanks-card h2{font-size:clamp(28px,4.4vw,54px);line-height:1;letter-spacing:-.035em;
+  margin-top:16px;color:var(--cream)}
+.thanks-card h2 em{font-style:italic;color:var(--gold);
+  text-shadow:0 0 60px rgba(255,207,122,.35)}
+.thanks-question{margin-top:18px;font-family:var(--serif);font-style:italic;
+  font-size:clamp(19px,2.4vw,30px);line-height:1.3;color:var(--gold-2)}
+.thanks-credits{margin-top:clamp(22px,3vw,32px);padding-top:20px;
+  border-top:1px solid rgba(246,233,213,.14);display:flex;flex-wrap:wrap;
+  gap:16px 34px;justify-content:center}
+.thanks-credits p{display:flex;flex-direction:column;gap:5px}
+.thanks-credits span{font-family:var(--mono);font-size:7.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:rgba(246,233,213,.44)}
+.thanks-credits b{font-family:var(--serif);font-weight:600;font-size:clamp(13px,1.3vw,16px);
+  color:var(--cream);letter-spacing:.01em}
+.thanks-ok{margin-top:clamp(22px,3vw,30px);font-family:var(--mono);font-size:8.5px;
+  letter-spacing:.22em;text-transform:uppercase;padding:12px 20px;cursor:pointer;
+  color:var(--orange-2);background:rgba(240,121,54,.14);
+  border:1px solid var(--orange);transition:background .3s,color .3s}
+.thanks-ok:hover{background:var(--orange);color:#160b04}
+.thanks-close{position:absolute;top:10px;right:12px;width:34px;height:34px;
+  display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;
+  color:rgba(246,233,213,.5);background:transparent;border:0;cursor:pointer;
+  transition:color .3s,transform .3s}
+.thanks-close:hover{color:var(--sand);transform:rotate(90deg)}
+@keyframes thanksIn{from{opacity:0;transform:translateY(26px) scale(.985)}to{opacity:1;transform:none}}
+body.modal-open{overflow:hidden}
+
+/* Auteurs en fin de page */
+.final-authors{margin-top:26px;padding-top:22px;border-top:1px solid rgba(246,233,213,.12);
+  display:flex;flex-direction:column;gap:4px}
+.final-authors .role{font-family:var(--mono);font-size:8px;letter-spacing:.26em;
+  text-transform:uppercase;color:rgba(246,233,213,.4)}
+.final-authors .names{font-family:var(--serif);font-weight:600;
+  font-size:clamp(14px,1.5vw,19px);color:var(--sand);line-height:1.4}
+.final-authors .names+.role{margin-top:12px}
+.final-authors .design{color:var(--gold-2)}
+
+@media (max-width:900px){
+  .q-opts{grid-template-columns:1fr;padding-left:0}
+  .q-exp{margin-left:0}
+}
+@media (max-width:600px){
+  .quiz-inner{width:calc(100vw - 36px)}
+  .hero-school{padding:12px 14px 10px;gap:9px}
+  .hero-school p{font-size:8px;letter-spacing:.18em}
+  .thanks-credits{flex-direction:column;gap:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  .thanks-card{animation:none!important}
+  .quiz-meter span{transition:none}
+}
+
+/* ============================================================
    CAHIER D'ARCHIVES
    ============================================================ */
 .archive{
@@ -1329,6 +1500,13 @@ html.lb-open{overflow:hidden}
       <div class="scrim" style="background:linear-gradient(180deg,rgba(4,7,15,.55) 0%,rgba(4,7,15,.05) 35%,rgba(4,7,15,.55) 78%,rgba(4,7,15,.94) 100%)"></div>
 
       <div class="copy center">
+        <div class="hero-school">
+          <img class="school-logo" src="assets/img/logo-ecole.png" alt="Logo de l'établissement" width="318" height="60" fetchpriority="high">
+          <p><b>Ghita · Nada · Imane · Wissal · Marwa</b></p>
+          <p class="roles">Recherche · informations · présentation</p>
+          <span class="sep" aria-hidden="true"></span>
+          <p>Design &amp; réalisation du site · <b>Rayane Jabri</b></p>
+        </div>
         <p class="eyebrow">Prologue · Un récit en onze chapitres</p>
         <h1>
           <span class="mask"><span>LA GRANDE</span></span>
@@ -4066,6 +4244,33 @@ html.lb-open{overflow:hidden}
   </div>
 </section>
 
+<!-- ==========================================================
+     QUIZ FINAL
+     ========================================================== -->
+<section class="quiz" id="quiz" aria-labelledby="quiz-title">
+  <div class="quiz-inner">
+    <header class="quiz-head">
+      <p class="eyebrow">Quiz final · 6 questions</p>
+      <h2 id="quiz-title">Avez-vous <em>tout retenu</em> ?</h2>
+      <p class="quiz-lede">Six questions pour vérifier l'essentiel du cours. Choisissez une réponse : la bonne réponse s'éclaire, l'explication apparaît, et le score se met à jour.</p>
+      <div class="quiz-meter" aria-hidden="true"><span id="quizBar"></span></div>
+      <p class="quiz-progress" id="quizProgress" aria-live="polite">Réponses : 0 / 6</p>
+    </header>
+
+    <div class="quiz-list" id="quizList"></div>
+
+    <div class="quiz-end" id="quizEnd" hidden>
+      <p class="quiz-score-label">Votre score</p>
+      <p class="quiz-score"><b id="quizScore">0</b><span>/ 6</span></p>
+      <p class="quiz-verdict" id="quizVerdict"></p>
+      <div class="row">
+        <button class="primary" id="quizThanks" type="button">Message de fin</button>
+        <button id="quizReset" type="button">Recommencer</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <!-- ==========================================================
@@ -4127,10 +4332,33 @@ html.lb-open{overflow:hidden}
       <span>Un site animé · 15 photographies d'archives</span>
       <span>HTML · CSS · JavaScript</span>
     </div>
+
+    <div class="final-authors">
+      <p class="role">Recherche · informations · présentation</p>
+      <p class="names">Ghita · Nada · Imane · Wissal · Marwa</p>
+      <p class="role">Design &amp; réalisation du site</p>
+      <p class="names design">Rayane Jabri</p>
+    </div>
   </div>
 </section>
 
 <a class="top-link" href="#s0">↑ Revoir</a>
+
+<!-- Message de fin de présentation -->
+<div class="thanks-modal" id="thanksModal" role="dialog" aria-modal="true" aria-labelledby="thanksTitle" aria-describedby="thanksQuestion" hidden>
+  <div class="thanks-backdrop" data-close></div>
+  <div class="thanks-card">
+    <button class="thanks-close" type="button" data-close aria-label="Fermer le message">×</button>
+    <p class="thanks-kicker">Fin de la présentation</p>
+    <h2 id="thanksTitle">Merci de votre <em>attention</em>.</h2>
+    <p class="thanks-question" id="thanksQuestion">Avez-vous des questions ?</p>
+    <div class="thanks-credits">
+      <p><span>Recherche · informations · présentation</span><b>Ghita · Nada · Imane · Wissal · Marwa</b></p>
+      <p><span>Design &amp; réalisation</span><b>Rayane Jabri</b></p>
+    </div>
+    <button class="thanks-ok" type="button" data-close>Retour au site</button>
+  </div>
+</div>
 
 <dialog class="lightbox" id="lightbox" aria-labelledby="lbTitle">
   <button class="lb-close" type="button" aria-label="Fermer la visionneuse">×</button>
@@ -4334,6 +4562,8 @@ html.lb-open{overflow:hidden}
     });
   }
   const fin = document.getElementById('fin');
+  const quizSection = document.getElementById('quiz');
+  if (quizSection) stops.push({el: quizSection});
   if (fin) stops.push({el: fin});
   stops.push({end: true, el: null});
 
@@ -4437,7 +4667,7 @@ html.lb-open{overflow:hidden}
     if (window.getSelection && String(window.getSelection()).trim()) return;
     if (document.querySelector('dialog[open]')) return;
     const t = e.target;
-    if (t.closest('a,button,input,select,textarea,summary,label,[role="button"],.rail,.archive,.finale,.topbar,.chapter-count,.pbar')) return;
+    if (t.closest('a,button,input,select,textarea,summary,label,[role="button"],.rail,.archive,.finale,.quiz,.thanks-modal,.topbar,.chapter-count,.pbar')) return;
     if (!t.closest('.scene')) return;
     goNext();
   });
@@ -4778,6 +5008,190 @@ html.lb-open{overflow:hidden}
   document.addEventListener('visibilitychange', () => {
     document.body.style.animationPlayState = document.hidden ? 'paused' : '';
   });
+
+  /* ---------------------------------------------------------
+     Quiz final — 6 questions, score et message de fin
+  --------------------------------------------------------- */
+  const QUIZ = [
+    {
+      q: "Quel événement déclenche la crise de juillet 1914 ?",
+      a: ["L'invasion de la Belgique", "L'assassinat de François-Ferdinand à Sarajevo", "La mobilisation russe"],
+      r: 1,
+      e: "Le 28 juin 1914, l'archiduc François-Ferdinand, héritier du trône d'Autriche-Hongrie, est assassiné à Sarajevo."
+    },
+    {
+      q: "Quels pays forment la Triple-Entente ?",
+      a: ["Allemagne, Autriche-Hongrie, Italie", "France, Royaume-Uni, Russie", "France, Russie, Italie"],
+      r: 1,
+      e: "La Triple-Entente unit la France, le Royaume-Uni et la Russie. L'Italie, elle, reste neutre en 1914 puis rejoint l'Entente en 1915."
+    },
+    {
+      q: "Quelle bataille arrête l'invasion allemande en septembre 1914 ?",
+      a: ["La Marne", "Verdun", "La Somme"],
+      r: 0,
+      e: "Du 6 au 12 septembre 1914, la Marne sauve Paris et brise le plan allemand de guerre courte."
+    },
+    {
+      q: "En quelle année se déroule la bataille de Verdun ?",
+      a: ["1915", "1916", "1918"],
+      r: 1,
+      e: "Verdun se déroule du 21 février au 18 décembre 1916 : dix mois de feu, environ 300 000 morts et disparus."
+    },
+    {
+      q: "Quel pays entre en guerre aux côtés des Alliés en avril 1917 ?",
+      a: ["Les États-Unis", "L'Italie", "Le Japon"],
+      r: 0,
+      e: "Les États-Unis entrent en guerre le 6 avril 1917 : leurs hommes, leur matériel et leur argent changent l'équilibre du conflit."
+    },
+    {
+      q: "Quel traité est signé avec l'Allemagne le 28 juin 1919 ?",
+      a: ["Le traité de Sèvres", "Le traité de Versailles", "Le traité de Trianon"],
+      r: 1,
+      e: "Le traité de Versailles est signé le 28 juin 1919, cinq ans jour pour jour après l'attentat de Sarajevo."
+    }
+  ];
+
+  const quizList = document.getElementById('quizList');
+  const quizBar = document.getElementById('quizBar');
+  const quizProgress = document.getElementById('quizProgress');
+  const quizEnd = document.getElementById('quizEnd');
+  const quizScoreEl = document.getElementById('quizScore');
+  const quizVerdict = document.getElementById('quizVerdict');
+  const thanksModal = document.getElementById('thanksModal');
+  const answers = new Array(QUIZ.length).fill(-1);
+  let thanksShown = false;
+  let lastFocus = null;
+
+  function quizUpdate(){
+    const done = answers.filter(v => v >= 0).length;
+    if (quizBar) quizBar.style.width = (done / QUIZ.length * 100) + '%';
+    if (quizProgress){
+      quizProgress.textContent = 'Réponses : ' + done + ' / ' + QUIZ.length;
+    }
+    if (done === QUIZ.length) finishQuiz();
+  }
+
+  function finishQuiz(){
+    const score = QUIZ.reduce((n, item, i) => n + (answers[i] === item.r ? 1 : 0), 0);
+    if (quizScoreEl) quizScoreEl.textContent = score;
+    if (quizVerdict){
+      let txt;
+      if (score === QUIZ.length) txt = "Sans faute. Le cours est maîtrisé : vous pouvez présenter sans notes.";
+      else if (score === 5) txt = "Excellent. Une seule hésitation — le reste est solide.";
+      else if (score === 4) txt = "Très bien. Quelques dates à revoir, rien de grave.";
+      else if (score >= 2) txt = "Les grandes lignes sont là. Relisez les parties III et V du cours.";
+      else txt = "Le cours est à reprendre : commencez par Sarajevo, les deux camps et les phases de la guerre.";
+      quizVerdict.textContent = txt;
+    }
+    if (quizEnd) quizEnd.hidden = false;
+    if (!thanksShown) window.setTimeout(openThanks, 1200);
+  }
+
+  function answerQuestion(qi, ai, card){
+    if (answers[qi] >= 0) return;
+    answers[qi] = ai;
+    const item = QUIZ[qi];
+    const btns = Array.from(card.querySelectorAll('.q-opt'));
+    btns.forEach((b, i) => {
+      b.disabled = true;
+      if (i === item.r) b.classList.add('correct');
+      else if (i === ai) b.classList.add('wrong');
+      else b.classList.add('faded');
+    });
+    const exp = card.querySelector('.q-exp');
+    if (exp){
+      exp.innerHTML = '<b>' + item.a[item.r] + '</b> — ' + item.e;
+      exp.hidden = false;
+    }
+    card.classList.add('answered');
+    quizUpdate();
+  }
+
+  function buildQuiz(){
+    if (!quizList) return;
+    quizList.innerHTML = '';
+    QUIZ.forEach((item, qi) => {
+      const card = document.createElement('div');
+      card.className = 'q-card';
+
+      const top = document.createElement('div');
+      top.className = 'q-top';
+      const num = document.createElement('span');
+      num.className = 'q-num';
+      num.textContent = String(qi + 1).padStart(2, '0');
+      const qt = document.createElement('p');
+      qt.className = 'q-text';
+      qt.textContent = item.q;
+      top.appendChild(num);
+      top.appendChild(qt);
+
+      const opts = document.createElement('div');
+      opts.className = 'q-opts';
+      item.a.forEach((label, ai) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'q-opt';
+        b.textContent = label;
+        b.addEventListener('click', () => answerQuestion(qi, ai, card));
+        opts.appendChild(b);
+      });
+
+      const exp = document.createElement('p');
+      exp.className = 'q-exp';
+      exp.hidden = true;
+
+      card.appendChild(top);
+      card.appendChild(opts);
+      card.appendChild(exp);
+      quizList.appendChild(card);
+    });
+  }
+
+  function openThanks(){
+    if (!thanksModal) return;
+    lastFocus = document.activeElement;
+    thanksModal.hidden = false;
+    document.body.classList.add('modal-open');
+    thanksShown = true;
+    const btn = thanksModal.querySelector('.thanks-ok');
+    if (btn) btn.focus({preventScroll:true});
+  }
+
+  function closeThanks(){
+    if (!thanksModal || thanksModal.hidden) return;
+    thanksModal.hidden = true;
+    document.body.classList.remove('modal-open');
+    if (lastFocus && typeof lastFocus.focus === 'function'){
+      lastFocus.focus({preventScroll:true});
+    }
+  }
+
+  if (thanksModal){
+    thanksModal.addEventListener('click', e => {
+      if (e.target.closest('[data-close]')) closeThanks();
+    });
+    document.addEventListener('keydown', e => {
+      if (thanksModal.hidden) return;
+      if (e.key === 'Escape'){ e.preventDefault(); closeThanks(); return; }
+      if (['ArrowDown','ArrowUp','ArrowLeft','ArrowRight','PageDown','PageUp','Home','End',' '].includes(e.key)){
+        e.stopPropagation();
+      }
+    }, true);
+  }
+
+  const quizThanks = document.getElementById('quizThanks');
+  if (quizThanks) quizThanks.addEventListener('click', openThanks);
+
+  const quizReset = document.getElementById('quizReset');
+  if (quizReset) quizReset.addEventListener('click', () => {
+    answers.fill(-1);
+    if (quizEnd) quizEnd.hidden = true;
+    buildQuiz();
+    quizUpdate();
+  });
+
+  buildQuiz();
+  quizUpdate();
 })();
 </script>
 </body>
