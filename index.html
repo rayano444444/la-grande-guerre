@@ -875,6 +875,13 @@ body.modal-open{overflow:hidden}
   font-size:clamp(14px,1.5vw,19px);color:var(--sand);line-height:1.4}
 .final-authors .names+.role{margin-top:12px}
 .final-authors .design{color:var(--gold-2)}
+.final-thanks{margin-top:18px;align-self:center;font-family:var(--mono);font-size:8px;
+  letter-spacing:.2em;text-transform:uppercase;padding:10px 15px;cursor:pointer;
+  color:rgba(246,233,213,.6);background:transparent;
+  border:1px solid rgba(246,233,213,.18);
+  transition:border-color .3s,color .3s,background .3s}
+.final-thanks:hover{color:var(--orange-2);border-color:var(--orange);
+  background:rgba(240,121,54,.12)}
 
 @media (max-width:900px){
   .q-opts{grid-template-columns:1fr;padding-left:0}
@@ -4338,6 +4345,7 @@ html.lb-open{overflow:hidden}
       <p class="names">Ghita · Nada · Imane · Wissal · Marwa</p>
       <p class="role">Design &amp; réalisation du site</p>
       <p class="names design">Rayane Jabri</p>
+      <button class="final-thanks" id="finalThanks" type="button">Message de fin · Avez-vous des questions ?</button>
     </div>
   </div>
 </section>
@@ -5181,6 +5189,9 @@ html.lb-open{overflow:hidden}
 
   const quizThanks = document.getElementById('quizThanks');
   if (quizThanks) quizThanks.addEventListener('click', openThanks);
+
+  const finalThanks = document.getElementById('finalThanks');
+  if (finalThanks) finalThanks.addEventListener('click', openThanks);
 
   const quizReset = document.getElementById('quizReset');
   if (quizReset) quizReset.addEventListener('click', () => {
