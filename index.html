@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#070d19">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23070d19'/%3E%3Cpath d='M20 12h24v8h-8v32h-8V20h-8z' fill='%23f07936'/%3E%3C/svg%3E">
 <title>La Grande Guerre — 1914·1918</title>
 <style>
 /* ============================================================
@@ -87,10 +88,6 @@ img,svg{display:block}
 /* ============================================================
    HUD
    ============================================================ */
-.progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:80;background:rgba(246,233,213,.06)}
-.progress i{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;
-  background:linear-gradient(90deg,var(--brown),var(--red),var(--orange));
-  box-shadow:0 0 18px rgba(240,121,54,.7)}
 .hud{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;justify-content:space-between;
   align-items:center;padding:22px clamp(18px,4vw,54px);pointer-events:none;
   font-family:var(--mono);font-size:10px;letter-spacing:.34em;text-transform:uppercase;
@@ -100,25 +97,6 @@ img,svg{display:block}
   box-shadow:0 0 0 5px rgba(198,43,31,.14);animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.25;box-shadow:0 0 0 9px rgba(198,43,31,.05)}}
 .hud .r{color:rgba(246,233,213,.4)}
-
-.rail{position:fixed;right:clamp(14px,3vw,42px);top:50%;transform:translateY(-50%);
-  z-index:70;display:flex;flex-direction:column;gap:18px;align-items:flex-end}
-.rail a{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;
-  font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase}
-.rail a .lbl{opacity:0;transform:translateX(8px);transition:opacity .35s,transform .35s;
-  color:rgba(246,233,213,.5);white-space:nowrap}
-.rail a:hover .lbl,.rail a.on .lbl{opacity:1;transform:none}
-.rail a .tick{position:relative;width:26px;height:1px;background:rgba(246,233,213,.22);transition:background .4s}
-.rail a .tick::after{content:"";position:absolute;right:0;top:-2px;width:5px;height:5px;border-radius:50%;
-  background:rgba(246,233,213,.35);transition:background .4s,box-shadow .4s,transform .4s}
-.rail a.on .tick{background:var(--orange)}
-.rail a.on .tick::after{background:var(--orange-2);transform:scale(1.5);box-shadow:0 0 12px rgba(255,157,85,.9)}
-.rail a.on .lbl{color:var(--sand)}
-
-.chapter-count{position:fixed;left:clamp(18px,4vw,54px);bottom:clamp(16px,3vh,30px);z-index:70;
-  font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:rgba(246,233,213,.35);
-  pointer-events:none}
-.chapter-count b{color:var(--sand);font-weight:400}
 
 /* ============================================================
    CHAPITRES / SCÈNES
@@ -178,70 +156,30 @@ h2 em{font-style:italic;color:var(--orange-2)}
 .copy.center>*{transform:translateY(calc((1 - var(--v,1)) * 18px))}
 
 /* ============================================================
-   ENTRÉES DE TEXTE — une animation différente par chapitre.
-   Elles se jouent une seule fois, à l'arrivée sur la partie
-   (flèches, clic ou rail), et ne se répètent pas.
+   ENTRÉES DE TEXTE — une seule et même animation partout.
+   Elle se joue à l'arrivée sur la partie, avec un léger décalage
+   entre les blocs, et ne se répète pas.
    ============================================================ */
+@keyframes revealUp{from{opacity:0;transform:translateY(56px)}to{opacity:1;transform:none}}
+
 .chapter.arrive .copy>*{
-  animation-duration:1s;
-  animation-timing-function:cubic-bezier(.16,1,.3,1);
-  animation-fill-mode:both;
+  animation:revealUp 1.05s cubic-bezier(.16,1,.3,1) both;
 }
-.chapter.arrive .copy>*:nth-child(2){animation-delay:.07s}
-.chapter.arrive .copy>*:nth-child(3){animation-delay:.14s}
-.chapter.arrive .copy>*:nth-child(4){animation-delay:.21s}
-.chapter.arrive .copy>*:nth-child(5){animation-delay:.28s}
-.chapter.arrive .copy>*:nth-child(6){animation-delay:.35s}
-.chapter.arrive .copy>*:nth-child(7){animation-delay:.42s}
+.chapter.arrive .copy>*:nth-child(2){animation-delay:.08s}
+.chapter.arrive .copy>*:nth-child(3){animation-delay:.16s}
+.chapter.arrive .copy>*:nth-child(4){animation-delay:.24s}
+.chapter.arrive .copy>*:nth-child(5){animation-delay:.32s}
+.chapter.arrive .copy>*:nth-child(6){animation-delay:.4s}
+.chapter.arrive .copy>*:nth-child(7){animation-delay:.48s}
 
-.chapter[data-anim="1"].arrive .copy>*{animation-name:aRise}
-.chapter[data-anim="2"].arrive .copy>*{animation-name:aLeft}
-.chapter[data-anim="3"].arrive .copy>*{animation-name:aRight}
-.chapter[data-anim="4"].arrive .copy>*{animation-name:aZoomIn}
-.chapter[data-anim="5"].arrive .copy>*{animation-name:aBlur}
-.chapter[data-anim="6"].arrive .copy>*{animation-name:aTilt}
-.chapter[data-anim="7"].arrive .copy>*{animation-name:aWipe}
-.chapter[data-anim="8"].arrive .copy>*{animation-name:aDrop}
-.chapter[data-anim="9"].arrive .copy>*{animation-name:aSkew}
-.chapter[data-anim="10"].arrive .copy>*{animation-name:aZoomOut}
-.chapter[data-anim="11"].arrive .copy>*{animation-name:aSwing}
-.chapter[data-anim="12"].arrive .copy>*{animation-name:aFlip}
-
-@keyframes aRise{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
-@keyframes aLeft{from{opacity:0;transform:translateX(-64px)}to{opacity:1;transform:none}}
-@keyframes aRight{from{opacity:0;transform:translateX(64px)}to{opacity:1;transform:none}}
-@keyframes aZoomIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
-@keyframes aZoomOut{from{opacity:0;transform:scale(1.12)}to{opacity:1;transform:none}}
-@keyframes aTilt{from{opacity:0;transform:perspective(900px) rotateX(-18deg) translateY(26px)}
-  to{opacity:1;transform:perspective(900px) rotateX(0) translateY(0)}}
-@keyframes aBlur{from{opacity:0;filter:blur(14px);transform:translateY(18px)}
-  to{opacity:1;filter:blur(0);transform:none}}
-@keyframes aWipe{from{opacity:0;clip-path:inset(0 0 100% 0);transform:translateY(16px)}
-  to{opacity:1;clip-path:inset(0 0 0 0);transform:none}}
-@keyframes aSkew{from{opacity:0;transform:skewY(5deg) translateY(30px)}to{opacity:1;transform:none}}
-@keyframes aDrop{from{opacity:0;transform:translateY(-58px)}to{opacity:1;transform:none}}
-@keyframes aSwing{from{opacity:0;transform:rotate(-2.6deg) scale(.97) translateY(20px)}to{opacity:1;transform:none}}
-@keyframes aFlip{from{opacity:0;transform:perspective(900px) rotateY(-18deg) translateX(20px)}to{opacity:1;transform:none}}
-
-/* Épilogue final : entrée propre, une seule fois */
+/* Épilogue final : même entrée que les chapitres */
 .finale.arrive .finale-inner>*{
-  animation:aFinale .95s cubic-bezier(.16,1,.3,1) both;
+  animation:revealUp 1.05s cubic-bezier(.16,1,.3,1) both;
 }
 .finale.arrive .finale-inner>*:nth-child(2){animation-delay:.08s}
 .finale.arrive .finale-inner>*:nth-child(3){animation-delay:.16s}
 .finale.arrive .finale-inner>*:nth-child(4){animation-delay:.24s}
 .finale.arrive .finale-inner>*:nth-child(5){animation-delay:.32s}
-@keyframes aFinale{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
-
-/* Indication de défilement */
-.cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:7;
-  display:flex;flex-direction:column;align-items:center;gap:10px;
-  font-family:var(--mono);font-size:9px;letter-spacing:.38em;text-transform:uppercase;color:rgba(246,233,213,.5)}
-.cue .bar{width:1px;height:52px;background:linear-gradient(180deg,var(--orange),transparent);
-  position:relative;overflow:hidden}
-.cue .bar::after{content:"";position:absolute;inset:0;background:var(--cream);
-  animation:cue 2.2s cubic-bezier(.6,0,.2,1) infinite}
-@keyframes cue{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
 
 /* Grand chiffre éditorial */
 .bigyear{position:absolute;z-index:2;right:clamp(10px,4vw,70px);top:clamp(60px,12vh,140px);
@@ -497,9 +435,6 @@ h2 em{font-style:italic;color:var(--orange-2)}
   .copy{left:24px;bottom:110px;width:calc(100vw - 84px);max-width:680px}
   .copy.center{width:min(680px,calc(100vw - 84px))}
   .lead,.more{max-width:100%}
-  .rail{right:12px;gap:14px}
-  .rail a .lbl{display:none}
-  .rail a .tick{width:18px}
   .bigyear{opacity:.6}
   .hud{font-size:9px;letter-spacing:.24em;padding:16px 18px}
   .chrono ol{grid-template-columns:1fr}
@@ -507,10 +442,7 @@ h2 em{font-style:italic;color:var(--orange-2)}
   .figures{gap:18px 30px}
   .coda{grid-template-columns:1fr;gap:20px;margin-top:26px;padding-top:22px}
 }
-@media (max-height:740px){
-  .rail{gap:12px}
-  .rail a .tick{width:18px}
-}
+
 @media (max-width:600px){
   h1{font-size:clamp(44px,14vw,80px)}
   h2{font-size:clamp(38px,12vw,64px)}
@@ -519,7 +451,6 @@ h2 em{font-style:italic;color:var(--orange-2)}
   .lead{font-size:14px}
   .more{display:block;font-size:13px;line-height:1.62;margin-top:10px}
   .chips span{font-size:8px;padding:6px 10px}
-  .cue{display:none}
   .chapter{height:210vh}
   .chapter.hero{height:150vh}
 }
@@ -682,7 +613,7 @@ h2 em{font-style:italic;color:var(--orange-2)}
 .causes li:nth-child(4)::before{color:var(--c-gold)}
 .causes li:nth-child(5)::before{color:var(--c-blue-2)}
 
-/* --- Entrée de chaque leçon (une seule fois, à l'arrivée) --- */
+/* --- Entrée de chaque leçon (même animation que les chapitres) --- */
 .lesson.arrive .lesson-head,
 .lesson.arrive .lesson-body>*,
 .lesson.arrive .lesson-facts,
@@ -690,18 +621,11 @@ h2 em{font-style:italic;color:var(--orange-2)}
 .lesson.arrive .camps,
 .lesson.arrive .lesson-timeline,
 .lesson.arrive .causes{
-  animation:aCours .95s cubic-bezier(.16,1,.3,1) both}
-.lesson.arrive .lesson-body>*:nth-child(2){animation-delay:.09s}
-.lesson.arrive .lesson-body>*:nth-child(3){animation-delay:.18s}
-.lesson.arrive .lesson-body>*:nth-child(4){animation-delay:.27s}
-.lesson.arrive .lesson-body>*:nth-child(5){animation-delay:.36s}
-@keyframes aCours{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-
-/* --- Lien cours dans le rail --- */
-.rail a.cours-link{margin-top:5px}
-.rail a.cours-link .tick::after{background:rgba(255,207,122,.8)}
-.rail a.cours-link.on .tick{background:var(--gold)}
-.rail a.cours-link.on .tick::after{background:var(--gold-2);box-shadow:0 0 12px rgba(255,232,189,.9)}
+  animation:revealUp 1.05s cubic-bezier(.16,1,.3,1) both}
+.lesson.arrive .lesson-body>*:nth-child(2){animation-delay:.08s}
+.lesson.arrive .lesson-body>*:nth-child(3){animation-delay:.16s}
+.lesson.arrive .lesson-body>*:nth-child(4){animation-delay:.24s}
+.lesson.arrive .lesson-body>*:nth-child(5){animation-delay:.32s}
 
 /* --- Adaptations --- */
 @media (max-width:900px){
@@ -722,43 +646,73 @@ h2 em{font-style:italic;color:var(--orange-2)}
 }
 
 /* ============================================================
-   PANNEAU D'OUVERTURE — ÉTABLISSEMENT ET AUTEURS
+   COUVERTURE — la présentation s'ouvre comme une page de titre
    ============================================================ */
-.hero-school{position:relative;display:inline-flex;flex-direction:column;align-items:center;
-  gap:11px;margin:0 auto clamp(20px,3vh,30px);padding:15px 24px 13px;
-  border:1px solid rgba(255,217,156,.34);
-  background:linear-gradient(150deg,rgba(8,12,22,.62),rgba(8,12,22,.24));
-  box-shadow:0 26px 70px rgba(0,0,0,.45),0 0 60px rgba(255,207,122,.07) inset}
-.hero-school::before{content:"";position:absolute;inset:4px;pointer-events:none;
-  border:1px solid rgba(255,217,156,.12)}
-.hero-school::after{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(255,217,156,.95),transparent);
-  background-size:220% 100%;animation:lineSweep 7s linear infinite}
-@keyframes lineSweep{0%{background-position:120% 0}100%{background-position:-120% 0}}
-.school-logo{display:block;width:auto;height:clamp(28px,3.4vw,40px);
-  background:#fff;padding:6px 10px;border-radius:2px;
-  box-shadow:0 6px 22px rgba(0,0,0,.45),0 0 26px rgba(255,217,156,.22)}
-.hero-school p{font-family:var(--mono);font-size:9px;letter-spacing:.24em;
-  text-transform:uppercase;color:rgba(255,243,225,.92);line-height:1.9}
-.hero-school p b{color:var(--gold-2);font-weight:400;letter-spacing:.16em}
-.hero-school .roles{color:rgba(255,235,210,.68);font-size:8px;letter-spacing:.22em}
-.hero-school .sep{width:96px;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(255,217,156,.95),transparent)}
-.hero-school>*{animation:heroChildIn .85s cubic-bezier(.16,1,.3,1) both}
-.hero-school>*:nth-child(2){animation-delay:.1s}
-.hero-school>*:nth-child(3){animation-delay:.18s}
-.hero-school>*:nth-child(4){animation-delay:.26s}
-.hero-school>*:nth-child(5){animation-delay:.34s}
-@keyframes heroChildIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.copy.hero-cover{left:clamp(22px,7vw,112px);right:clamp(22px,7vw,112px);
+  top:50%;bottom:auto;transform:translateY(-50%);width:auto;
+  max-width:min(1020px,92vw);text-align:left}
+.hero .scrim{background:linear-gradient(90deg,rgba(4,7,15,.94) 0%,rgba(4,7,15,.8) 34%,rgba(4,7,15,.24) 68%,rgba(4,7,15,0) 100%)}
+.cover-top{display:flex;align-items:center;gap:clamp(14px,2vw,22px);
+  margin-bottom:clamp(22px,4vh,40px)}
+.school-logo{display:block;width:auto;height:clamp(26px,3vw,38px);
+  background:#fff;padding:5px 9px;border-radius:2px;
+  box-shadow:0 5px 20px rgba(0,0,0,.5),0 0 22px rgba(255,217,156,.18)}
+.cover-school{font-family:var(--mono);font-size:clamp(8px,.7vw,10px);letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(255,244,227,.62)}
+.copy.hero-cover .eyebrow{margin-bottom:14px}
+.copy.hero-cover h1{font-size:clamp(58px,11.5vw,188px);line-height:.82;letter-spacing:-.045em;
+  text-shadow:0 34px 100px rgba(0,0,0,.7),0 0 70px rgba(240,121,54,.16)}
+.copy.hero-cover .lead{max-width:30ch;margin-top:clamp(18px,2.8vh,30px);
+  font-size:clamp(17px,1.55vw,23px);line-height:1.55;color:rgba(255,247,236,.96)}
+.cover-bottom{display:flex;align-items:flex-end;flex-wrap:wrap;gap:clamp(18px,2.6vw,38px);
+  margin-top:clamp(26px,4.5vh,46px);padding-top:clamp(16px,2.4vh,24px);
+  border-top:1px solid rgba(255,244,227,.22)}
+.cover-roles{margin-bottom:6px;font-family:var(--mono);font-size:8.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(255,244,227,.6)}
+.cover-names{font-family:var(--serif);font-weight:600;font-size:clamp(14px,1.35vw,19px);
+  line-height:1.25;color:var(--cream)}
+.cover-sep{width:1px;align-self:stretch;min-height:38px;background:rgba(255,244,227,.2)}
+.cover-cta{margin-left:auto;display:inline-flex;align-items:center;gap:12px;
+  border-radius:0;font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  padding:14px 20px;cursor:pointer;color:#1c1004;border:1px solid var(--gold);
+  background:linear-gradient(120deg,var(--gold-2),var(--gold));
+  box-shadow:0 14px 40px rgba(255,207,122,.28);
+  transition:transform .3s,box-shadow .3s,filter .3s}
+.cover-cta svg{width:20px;height:20px}
+.cover-cta svg path{animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(4px)}}
+.cover-cta:hover{transform:translateY(-2px);filter:brightness(1.05);
+  box-shadow:0 20px 50px rgba(255,216,142,.42)}
+.cover-cta:active{transform:translateY(0)}
 
-/* Écrans très bas (téléphone en paysage) : le panneau se compacte */
-@media (max-height:620px){
-  .hero-school{padding:8px 12px 7px;gap:5px;margin-bottom:12px}
-  .school-logo{height:20px;padding:4px 7px}
-  .hero-school p{font-size:7px;letter-spacing:.16em;line-height:1.5}
-  .hero-school .roles,.hero-school .sep{display:none}
-  #s0 .chips{display:none}
-  #s0 .lead{font-size:13px;margin-top:12px}
+@media (max-width:900px){
+  .hero .scrim{background:linear-gradient(180deg,rgba(4,7,15,.86) 0%,rgba(4,7,15,.6) 40%,rgba(4,7,15,.82) 100%)}
+  .copy.hero-cover{left:24px;right:24px;max-width:none}
+  .cover-bottom{gap:16px 26px}
+  .cover-cta{margin-left:0}
+}
+@media (max-width:600px){
+  .copy.hero-cover h1{font-size:clamp(46px,14vw,84px)}
+  .copy.hero-cover .lead{font-size:15px;max-width:100%}
+  .cover-top{gap:12px;margin-bottom:18px}
+  .cover-sep{display:none}
+  .cover-bottom{gap:14px 22px}
+  .cover-names{font-size:14px}
+  .cover-cta{width:100%;justify-content:center;padding:13px 16px}
+}
+@media (max-height:640px){
+  .copy.hero-cover{top:47%}
+  .cover-top{margin-bottom:12px}
+  .school-logo{height:24px;padding:4px 7px}
+  .cover-school{font-size:8px;letter-spacing:.22em}
+  .copy.hero-cover .eyebrow{margin-bottom:10px}
+  .copy.hero-cover h1{font-size:clamp(44px,8.6vw,74px)}
+  .copy.hero-cover .lead{margin-top:10px;font-size:13px;max-width:44ch}
+  .cover-bottom{margin-top:14px;padding-top:10px;gap:12px 20px}
+  .cover-roles{font-size:7.5px}
+  .cover-names{font-size:13px}
+  .cover-cta{padding:9px 13px;font-size:9px}
+  .cover-cta svg{width:16px;height:16px}
 }
 
 /* ============================================================
@@ -794,8 +748,7 @@ h2 em{font-style:italic;color:var(--orange-2)}
   transition:border-color .45s,background .45s,transform .45s,box-shadow .45s}
 .q-card:hover{transform:translateY(-2px);border-color:rgba(255,217,156,.4);
   box-shadow:0 22px 50px rgba(0,0,0,.35)}
-.q-card.reveal{animation:cardIn .7s cubic-bezier(.16,1,.3,1) backwards}
-@keyframes cardIn{from{opacity:0;transform:translateY(20px) scale(.985)}to{opacity:1;transform:none}}
+.q-card.reveal{animation:revealUp 1.05s cubic-bezier(.16,1,.3,1) backwards}
 .q-card.answered{transform:none;border-color:rgba(255,217,156,.34);
   background:linear-gradient(160deg,rgba(255,217,156,.09),rgba(246,233,213,.02))}
 .q-top{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:baseline}
@@ -926,8 +879,6 @@ body.modal-open{overflow:hidden}
 }
 @media (max-width:600px){
   .quiz-inner{width:calc(100vw - 36px)}
-  .hero-school{padding:12px 14px 10px;gap:9px}
-  .hero-school p{font-size:8px;letter-spacing:.18em}
   .thanks-credits{flex-direction:column;gap:12px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -1222,12 +1173,6 @@ body.modal-open{overflow:hidden}
 /* --- Révélation douce, liée au défilement --- */
 .ar-reveal{opacity:var(--v,1);transform:translateY(calc((1 - var(--v,1)) * 14px))}
 
-/* --- Lien d'archive dans le rail --- */
-.rail a.arch-link{margin-top:5px}
-.rail a.arch-link .tick::after{background:rgba(255,157,85,.7)}
-.rail a.arch-link.on .tick{background:var(--red)}
-.rail a.arch-link.on .tick::after{background:var(--orange-2)}
-
 /* --- Visionneuse --- */
 .lightbox{width:min(1180px,94vw);max-width:none;max-height:none;margin:auto;padding:0;
   border:1px solid rgba(246,233,213,.2);background:#080d17;color:var(--cream);
@@ -1326,7 +1271,6 @@ html.lb-open{overflow:hidden}
 .sources details li{color:rgba(255,244,227,.78)}
 .fine{color:rgba(255,244,227,.66)}
 .lb-credit{color:rgba(255,244,227,.56)}
-.chapter-count{color:rgba(255,244,227,.52)}
 .sommaire-head span:last-child{color:rgba(255,244,227,.58)}
 
 /* ============================================================
@@ -1355,7 +1299,7 @@ html.lb-open{overflow:hidden}
   .spot-panel.on{animation:none}
   .cost-bar i{transition:none}
   .lightbox[open]{animation:none}
-  .hero-school>*,.hero-school::after,.quiz-meter span::after,
+  .cover-cta svg path,.quiz-meter span::after,
   .q-opt.correct,.q-opt.wrong,.q-exp,.quiz-end,.thanks-card{animation:none!important}
   .q-card.reveal{animation:none!important}
   .quiz-meter span{transition:none}
@@ -1472,16 +1416,11 @@ html.lb-open{overflow:hidden}
 <div class="grain" aria-hidden="true"></div>
 <div class="vignette" aria-hidden="true"></div>
 <canvas id="embers" aria-hidden="true"></canvas>
-<div class="progress" aria-hidden="true"><i id="pbar"></i></div>
 
 <header class="hud">
   <div class="l"><i class="live"></i> La Grande Guerre</div>
   <div class="r">1914 &mdash; 1918</div>
 </header>
-
-<nav class="rail" aria-label="Chapitres"></nav>
-
-<div class="chapter-count"><b id="chNum">00</b> <span>/ 11</span></div>
 
 <main>
 
@@ -1568,30 +1507,35 @@ html.lb-open{overflow:hidden}
           </g>
         </svg>
       </div>
-      <div class="scrim" style="background:linear-gradient(180deg,rgba(4,7,15,.55) 0%,rgba(4,7,15,.05) 35%,rgba(4,7,15,.55) 78%,rgba(4,7,15,.94) 100%)"></div>
+      <div class="scrim"></div>
 
-      <div class="copy center">
-        <div class="hero-school">
+      <div class="copy hero-cover">
+        <div class="cover-top">
           <img class="school-logo" src="assets/img/logo-ecole.png" alt="Logo de l'établissement" width="318" height="60" fetchpriority="high">
-          <p><b>Ghita · Nada · Imane · Wissal · Marwa</b></p>
-          <p class="roles">Recherche · informations · présentation</p>
-          <span class="sep" aria-hidden="true"></span>
-          <p>Design &amp; réalisation du site · <b>Rayane Jabri</b></p>
+          <span class="cover-school">Exposé d'histoire &middot; 1914 — 1918</span>
         </div>
-        <p class="eyebrow">Prologue · Un récit en onze chapitres</p>
+        <p class="eyebrow">Prologue &middot; Un récit en onze chapitres</p>
         <h1>
           <span class="mask"><span>LA GRANDE</span></span>
           <span class="mask d1"><span>GUERRE</span></span>
         </h1>
         <p class="lead">Quatre ans. Trente nations. Une génération engloutie dans la boue et le feu.</p>
-        <div class="chips">
-          <span><b>1914</b> — 1918</span>
-          <span>≈ 70 millions de soldats</span>
-          <span>Un monde qui bascule</span>
+        <div class="cover-bottom">
+          <div class="cover-block">
+            <p class="cover-roles">Recherche &middot; informations &middot; présentation</p>
+            <p class="cover-names">Ghita &middot; Nada &middot; Imane &middot; Wissal &middot; Marwa</p>
+          </div>
+          <span class="cover-sep" aria-hidden="true"></span>
+          <div class="cover-block">
+            <p class="cover-roles">Design &amp; réalisation du site</p>
+            <p class="cover-names">Rayane Jabri</p>
+          </div>
+          <button class="cover-cta" type="button" data-next>
+            Commencer
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
       </div>
-
-      <div class="cue"><span>↓ / clic</span><span class="bar"></span></div>
     </div>
   </section>
 
@@ -3885,7 +3829,7 @@ html.lb-open{overflow:hidden}
     <!-- QUIZ DE RÉVISION — dans le cours -->
     <div class="quiz-block" id="quiz" role="group" aria-labelledby="quiz-title">
       <header class="quiz-head ar-reveal">
-        <p class="lesson-kicker">Quiz de révision · 6 questions</p>
+        <p class="lesson-kicker">Quiz de révision</p>
         <h3 id="quiz-title">Avez-vous <em>tout retenu</em> ?</h3>
         <p class="quiz-lede">Six questions pour vérifier l'essentiel : une réponse par question, la correction s'affiche aussitôt, le score se met à jour.</p>
         <div class="quiz-meter" aria-hidden="true"><span id="quizBar"></span></div>
@@ -3916,7 +3860,7 @@ html.lb-open{overflow:hidden}
 
     <header class="archive-head">
       <div>
-        <p class="eyebrow">Cahier d'archives · 15 photographies</p>
+        <p class="eyebrow">Cahier d'archives</p>
         <h2 id="archives-title">Ce que les <em>photos</em> ne disent pas.</h2>
         <p class="archive-lede">Un siècle plus tard, les images restent. Mais que regardons-nous exactement ? Derrière chaque photographie : un photographe, une censure, un cadrage, un silence. Ce cahier propose de lire la guerre autrement — par les visages, les paysages et les traces.</p>
         <p class="archive-sub">Quinze documents, de la mobilisation de 1914 à l'armistice de 1918. Cliquez sur une image pour l'agrandir ; filtrez par thème ; explorez la carte, la tranchée et les chiffres.</p>
@@ -4453,7 +4397,6 @@ html.lb-open{overflow:hidden}
      Chaque élément avance avec le scroll, dès son premier pixel visible. */
   const copyReveals = [];
   chapters.forEach((ch, ci) => {
-    ch.dataset.anim = String(ci + 1);
     ch.querySelectorAll('.copy > *').forEach(el => copyReveals.push({ci, el}));
     ch.querySelectorAll('.mask > span').forEach(el => copyReveals.push({ci, el}));
   });
@@ -4569,7 +4512,7 @@ html.lb-open{overflow:hidden}
       if (el.style.getPropertyValue('--v') !== val) el.style.setProperty('--v', val);
     });
 
-    pbar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+    if (pbar) pbar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
 
     /* chapitre actif au centre de l'écran (repli sur le dernier après l'épilogue) */
     let idx = -1;
@@ -4587,7 +4530,7 @@ html.lb-open{overflow:hidden}
     if (archiveLink) archiveLink.classList.toggle('on', inArchive);
     if (inArchive) dots.forEach(d => d.classList.remove('on'));
 
-    chNum.textContent = inArchive ? 'A' : (inCours ? 'C' : (idx === 0 ? '00' : String(idx).padStart(2, '0')));
+    if (chNum) chNum.textContent = inArchive ? 'A' : (inCours ? 'C' : (idx === 0 ? '00' : String(idx).padStart(2, '0')));
     if (chTotal) chTotal.textContent = inArchive ? '/ archives' : (inCours ? '/ cours' : chTotalDefault);
 
     if (cue) cue.style.opacity = window.scrollY > vh * 0.3 ? '0' : '1';
@@ -4737,6 +4680,14 @@ html.lb-open{overflow:hidden}
     if (t.closest('a,button,input,select,textarea,summary,label,[role="button"],.rail,.archive,.finale,.quiz,.thanks-modal,.topbar,.chapter-count,.pbar')) return;
     if (!t.closest('.scene')) return;
     goNext();
+  });
+
+  /* Le bouton de couverture lance la présentation */
+  document.querySelectorAll('[data-next]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      goNext();
+    });
   });
 
   /* Flèche bas / haut, gauche / droite, page suivante / précédente */
