@@ -41,13 +41,13 @@
   --orange-2:#ff9d55;
   --red:#c62b1f;
   --red-2:#ff4433;
-  --gold:#ffcf7a;
-  --gold-2:#ffe8bd;
-  --blue:#5aa9ff;
-  --blue-2:#a8d4ff;
-  --cream:#f6e9d5;
-  --sand:#e2c7a3;
-  --muted:#c3b3a2;
+  --gold:#ffd88e;
+  --gold-2:#fff4d6;
+  --blue:#7cc2ff;
+  --blue-2:#cfe8ff;
+  --cream:#fff4e3;
+  --sand:#f0d7b5;
+  --muted:#d6c5b1;
   --line:rgba(246,233,213,.16);
   --serif:'Fraunces',Georgia,'Times New Roman',serif;
   --sans:'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
@@ -170,7 +170,7 @@ h2 em{font-style:italic;color:var(--orange-2)}
 .copy.center .chips{justify-content:center}
 .chips span{font-family:var(--mono);font-size:9px;letter-spacing:.24em;text-transform:uppercase;
   color:rgba(246,233,213,.7);border:1px solid var(--line);border-radius:999px;
-  padding:7px 13px;background:rgba(6,10,18,.38);backdrop-filter:blur(6px)}
+  padding:7px 13px;background:rgba(8,13,23,.5)}
 .chips b{color:var(--orange-2);font-weight:400}
 
 /* Révélation des blocs — pilotée au défilement, dès le premier pixel */
@@ -453,7 +453,8 @@ h2 em{font-style:italic;color:var(--orange-2)}
 .final-note{max-width:56ch;color:rgba(246,233,213,.55);font-size:clamp(13px,1.1vw,15px);line-height:1.8}
 .credits{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px}
 .credits span{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(246,233,213,.38);border:1px solid rgba(246,233,213,.10);border-radius:999px;padding:6px 11px}
+  color:rgba(255,243,225,.72);border:1px solid rgba(255,216,142,.2);border-radius:999px;padding:6px 11px;
+  background:rgba(246,233,213,.03)}
 
 /* Coda éditoriale */
 .coda{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3.6vw,42px);
@@ -531,13 +532,13 @@ h2 em{font-style:italic;color:var(--orange-2)}
    LE COURS — PLAN STRUCTURÉ
    ============================================================ */
 .cours{
-  --c-blue:#5aa9ff;
-  --c-blue-2:#a8d4ff;
-  --c-red:#ff6f5c;
-  --c-red-2:#ffa899;
-  --c-gold:#ffcf7a;
-  --c-gold-2:#ffe8bd;
-  --c-key:#ffa15e;
+  --c-blue:#7cc2ff;
+  --c-blue-2:#cfe8ff;
+  --c-red:#ff8570;
+  --c-red-2:#ffc0b3;
+  --c-gold:#ffd88e;
+  --c-gold-2:#fff4d6;
+  --c-key:#ffb375;
   position:relative;z-index:2;
   padding:clamp(84px,12vh,150px) 0 clamp(66px,9vh,104px);
   background:
@@ -723,19 +724,32 @@ h2 em{font-style:italic;color:var(--orange-2)}
 /* ============================================================
    PANNEAU D'OUVERTURE — ÉTABLISSEMENT ET AUTEURS
    ============================================================ */
-.hero-school{display:inline-flex;flex-direction:column;align-items:center;gap:12px;
-  margin:0 auto clamp(20px,3vh,30px);padding:14px 22px 12px;
-  border:1px solid rgba(246,233,213,.16);
-  background:linear-gradient(150deg,rgba(6,10,18,.72),rgba(6,10,18,.34));
-  box-shadow:0 24px 70px rgba(0,0,0,.45);backdrop-filter:blur(6px)}
+.hero-school{position:relative;display:inline-flex;flex-direction:column;align-items:center;
+  gap:11px;margin:0 auto clamp(20px,3vh,30px);padding:15px 24px 13px;
+  border:1px solid rgba(255,217,156,.34);
+  background:linear-gradient(150deg,rgba(8,12,22,.62),rgba(8,12,22,.24));
+  box-shadow:0 26px 70px rgba(0,0,0,.45),0 0 60px rgba(255,207,122,.07) inset}
+.hero-school::before{content:"";position:absolute;inset:4px;pointer-events:none;
+  border:1px solid rgba(255,217,156,.12)}
+.hero-school::after{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,217,156,.95),transparent);
+  background-size:220% 100%;animation:lineSweep 7s linear infinite}
+@keyframes lineSweep{0%{background-position:120% 0}100%{background-position:-120% 0}}
 .school-logo{display:block;width:auto;height:clamp(28px,3.4vw,40px);
   background:#fff;padding:6px 10px;border-radius:2px;
-  box-shadow:0 6px 22px rgba(0,0,0,.45)}
+  box-shadow:0 6px 22px rgba(0,0,0,.45),0 0 26px rgba(255,217,156,.22)}
 .hero-school p{font-family:var(--mono);font-size:9px;letter-spacing:.24em;
-  text-transform:uppercase;color:rgba(246,233,213,.66);line-height:1.9}
-.hero-school p b{color:var(--sand);font-weight:400;letter-spacing:.16em}
-.hero-school .roles{color:rgba(246,233,213,.42);font-size:8px;letter-spacing:.22em}
-.hero-school .sep{width:84px;height:1px;background:linear-gradient(90deg,transparent,rgba(240,121,54,.7),transparent)}
+  text-transform:uppercase;color:rgba(255,243,225,.92);line-height:1.9}
+.hero-school p b{color:var(--gold-2);font-weight:400;letter-spacing:.16em}
+.hero-school .roles{color:rgba(255,235,210,.68);font-size:8px;letter-spacing:.22em}
+.hero-school .sep{width:96px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,217,156,.95),transparent)}
+.hero-school>*{animation:heroChildIn .85s cubic-bezier(.16,1,.3,1) both}
+.hero-school>*:nth-child(2){animation-delay:.1s}
+.hero-school>*:nth-child(3){animation-delay:.18s}
+.hero-school>*:nth-child(4){animation-delay:.26s}
+.hero-school>*:nth-child(5){animation-delay:.34s}
+@keyframes heroChildIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* Écrans très bas (téléphone en paysage) : le panneau se compacte */
 @media (max-height:620px){
@@ -748,78 +762,104 @@ h2 em{font-style:italic;color:var(--orange-2)}
 }
 
 /* ============================================================
-   QUIZ FINAL
+   QUIZ DE RÉVISION — dans le cours
    ============================================================ */
-.quiz{position:relative;z-index:2;padding:clamp(76px,11vh,130px) 0 clamp(64px,9vh,110px);
-  background:
-    radial-gradient(900px 640px at 84% 0%,rgba(90,169,255,.12),transparent 62%),
-    radial-gradient(820px 620px at 8% 90%,rgba(198,43,31,.14),transparent 62%),
-    linear-gradient(180deg,#05080f 0%,#070d17 46%,#0a0810 100%);
-  border-top:1px solid rgba(246,233,213,.12)}
-.quiz-inner{width:min(880px,calc(100vw - clamp(40px,10vw,120px)));margin:0 auto}
-.quiz ::selection{background:var(--orange);color:#160b04}
-.quiz h2{font-size:clamp(32px,4.6vw,62px);line-height:1;letter-spacing:-.035em;margin-top:14px}
-.quiz h2 em{font-style:italic;color:var(--gold);text-shadow:0 0 50px rgba(255,207,122,.28)}
-.quiz-lede{max-width:60ch;margin-top:16px;font-size:clamp(13px,1.1vw,15.5px);
-  line-height:1.8;color:rgba(246,233,213,.82)}
-.quiz-meter{position:relative;height:2px;margin-top:26px;background:rgba(246,233,213,.14);overflow:hidden}
-.quiz-meter span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--gold));
-  transition:width .5s cubic-bezier(.16,1,.3,1)}
+.quiz-block{--accent:var(--gold);margin-top:clamp(56px,7vw,86px);
+  padding-top:clamp(30px,4vw,46px);border-top:1px solid rgba(246,233,213,.16)}
+.quiz-head h3{font-family:var(--serif);font-weight:900;font-size:clamp(27px,3.3vw,46px);
+  line-height:1.04;letter-spacing:-.025em;color:var(--cream);margin-top:12px;
+  text-shadow:0 20px 60px rgba(0,0,0,.55)}
+.quiz-head h3 em{font-style:italic;color:var(--gold);
+  text-shadow:0 0 54px rgba(255,217,156,.4)}
+.quiz-lede{max-width:62ch;margin-top:14px;font-size:clamp(13px,1.06vw,15px);
+  line-height:1.8;color:rgba(246,233,213,.9)}
+.quiz-meter{position:relative;height:3px;margin-top:24px;background:rgba(246,233,213,.16);
+  overflow:hidden;border-radius:2px}
+.quiz-meter span{position:relative;display:block;height:100%;width:0;
+  background:linear-gradient(90deg,var(--orange),var(--gold),var(--gold-2));
+  box-shadow:0 0 14px rgba(255,207,122,.55);
+  transition:width .6s cubic-bezier(.16,1,.3,1)}
+.quiz-meter span::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent);
+  animation:meterShine 2.2s linear infinite}
+@keyframes meterShine{from{transform:translateX(-110%)}to{transform:translateX(110%)}}
 .quiz-progress{margin-top:10px;font-family:var(--mono);font-size:8.5px;letter-spacing:.24em;
-  text-transform:uppercase;color:rgba(246,233,213,.5)}
+  text-transform:uppercase;color:rgba(246,233,213,.72)}
 
-.quiz-list{display:flex;flex-direction:column;gap:clamp(12px,1.6vw,18px);margin-top:clamp(26px,3.4vw,38px)}
-.q-card{border:1px solid rgba(246,233,213,.12);background:rgba(246,233,213,.022);
-  padding:clamp(16px,2.2vw,24px);transition:border-color .4s,background .4s}
-.q-card.answered{border-color:rgba(246,233,213,.18);background:rgba(246,233,213,.035)}
+.quiz-list{display:flex;flex-direction:column;gap:clamp(12px,1.6vw,18px);
+  margin-top:clamp(26px,3.4vw,38px)}
+.q-card{position:relative;border:1px solid rgba(246,233,213,.16);
+  background:linear-gradient(160deg,rgba(246,233,213,.045),rgba(246,233,213,.012));
+  padding:clamp(16px,2.2vw,24px);
+  transition:border-color .45s,background .45s,transform .45s,box-shadow .45s}
+.q-card:hover{transform:translateY(-2px);border-color:rgba(255,217,156,.4);
+  box-shadow:0 22px 50px rgba(0,0,0,.35)}
+.q-card.reveal{animation:cardIn .7s cubic-bezier(.16,1,.3,1) backwards}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px) scale(.985)}to{opacity:1;transform:none}}
+.q-card.answered{transform:none;border-color:rgba(255,217,156,.34);
+  background:linear-gradient(160deg,rgba(255,217,156,.09),rgba(246,233,213,.02))}
 .q-top{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:baseline}
 .q-num{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--gold)}
 .q-text{font-family:var(--serif);font-weight:600;font-size:clamp(15px,1.4vw,19px);
-  line-height:1.35;color:var(--cream)}
+  line-height:1.35;color:#fff6e8}
 .q-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;
   padding-left:46px}
 .q-opt{position:relative;display:flex;align-items:center;gap:9px;
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;line-height:1.5;
-  text-align:left;color:rgba(246,233,213,.8);background:rgba(6,10,18,.5);
-  border:1px solid rgba(246,233,213,.16);padding:11px 12px;cursor:pointer;
-  transition:border-color .25s,color .25s,background .25s,transform .25s}
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;line-height:1.5;
+  text-align:left;color:rgba(255,243,225,.9);background:rgba(6,10,18,.55);
+  border:1px solid rgba(246,233,213,.22);padding:11px 12px;cursor:pointer;
+  transition:border-color .25s,color .25s,background .25s,transform .25s,box-shadow .25s}
 .q-opt::before{content:"";flex:0 0 auto;width:7px;height:7px;border-radius:50%;
-  border:1px solid currentColor;opacity:.6}
+  border:1px solid currentColor;opacity:.65}
 .q-opt:hover:not(:disabled),.q-opt:focus-visible:not(:disabled){
-  border-color:rgba(255,207,122,.65);color:#fff4e2;background:rgba(240,121,54,.12);
-  transform:translateY(-1px);outline:none}
+  border-color:var(--gold);color:#fff;background:rgba(240,121,54,.2);
+  transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.35);outline:none}
+.q-opt:active:not(:disabled){transform:translateY(0) scale(.985)}
 .q-opt:disabled{cursor:default}
-.q-opt.correct{border-color:var(--gold);color:var(--gold-2);background:rgba(255,207,122,.14)}
-.q-opt.correct::before{background:var(--gold);border-color:var(--gold);opacity:1;
-  box-shadow:0 0 10px rgba(255,207,122,.9)}
-.q-opt.wrong{border-color:rgba(255,111,92,.8);color:#ffb3a6;background:rgba(198,43,31,.16)}
-.q-opt.wrong::before{border-color:#ff6f5c;opacity:1}
-.q-opt.faded{opacity:.4}
-.q-exp{margin:14px 0 0 46px;padding-left:12px;border-left:2px solid var(--gold);
-  font-size:clamp(11.5px,.95vw,13px);line-height:1.7;color:rgba(246,233,213,.78)}
-.q-exp b{color:var(--gold);font-weight:600}
+.q-opt.correct{border-color:var(--gold);color:#2a1a06;
+  background:linear-gradient(120deg,var(--gold-2),var(--gold));
+  box-shadow:0 0 28px rgba(255,217,156,.55);animation:optPop .5s cubic-bezier(.16,1,.3,1)}
+.q-opt.correct::before{background:#2a1a06;border-color:#2a1a06;opacity:1}
+.q-opt.wrong{border-color:#ff8b79;color:#ffe3dd;background:rgba(198,43,31,.32);
+  animation:optShake .45s cubic-bezier(.36,.07,.19,.97)}
+.q-opt.wrong::before{border-color:#ff8b79;opacity:1}
+.q-opt.faded{opacity:.42}
+@keyframes optPop{0%{transform:scale(.95)}55%{transform:scale(1.035)}100%{transform:none}}
+@keyframes optShake{0%,100%{transform:none}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.q-exp{margin:14px 0 0 46px;padding-left:13px;border-left:2px solid var(--gold);
+  font-size:clamp(11.5px,.95vw,13px);line-height:1.7;color:rgba(255,243,225,.9);
+  animation:expIn .5s cubic-bezier(.16,1,.3,1) both}
+.q-exp b{color:var(--gold-2);font-weight:600}
+@keyframes expIn{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:none}}
 
 .quiz-end{display:flex;flex-direction:column;align-items:center;gap:10px;
   margin-top:clamp(26px,3.4vw,38px);padding:clamp(22px,3vw,34px);
-  border:1px solid rgba(246,233,213,.16);
-  background:linear-gradient(160deg,rgba(255,207,122,.1),rgba(246,233,213,.02));
-  text-align:center}
+  border:1px solid rgba(255,217,156,.36);
+  background:
+    radial-gradient(420px 220px at 50% 0%,rgba(255,217,156,.2),transparent 70%),
+    linear-gradient(160deg,rgba(255,217,156,.14),rgba(246,233,213,.02));
+  text-align:center;animation:endIn .8s cubic-bezier(.16,1,.3,1) both}
+@keyframes endIn{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:none}}
 .quiz-end[hidden]{display:none}
 .quiz-score-label{font-family:var(--mono);font-size:8.5px;letter-spacing:.28em;
-  text-transform:uppercase;color:rgba(246,233,213,.55)}
+  text-transform:uppercase;color:rgba(255,243,225,.72)}
 .quiz-score{font-family:var(--serif);font-weight:900;font-size:clamp(46px,6vw,76px);
-  line-height:.9;letter-spacing:-.04em;color:var(--cream)}
-.quiz-score span{font-size:.34em;letter-spacing:.1em;color:rgba(246,233,213,.45);
+  line-height:.9;letter-spacing:-.04em;color:var(--gold-2);
+  text-shadow:0 0 46px rgba(255,217,156,.45)}
+.quiz-score span{font-size:.34em;letter-spacing:.1em;color:rgba(255,243,225,.6);
   font-family:var(--mono);font-weight:400;margin-left:6px;vertical-align:super}
 .quiz-verdict{max-width:52ch;font-size:clamp(12.5px,1.05vw,14.5px);line-height:1.75;
-  color:rgba(246,233,213,.8)}
+  color:rgba(255,243,225,.9)}
 .quiz-end .row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px}
 .quiz-end button{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;
   text-transform:uppercase;padding:11px 16px;cursor:pointer;
-  border:1px solid rgba(246,233,213,.2);background:transparent;color:var(--sand);
-  transition:border-color .3s,color .3s,background .3s}
-.quiz-end button:hover{border-color:var(--orange);color:var(--orange-2)}
-.quiz-end .primary{background:rgba(240,121,54,.16);border-color:var(--orange);color:var(--orange-2)}
+  border:1px solid rgba(255,243,225,.3);background:transparent;color:#ffe9c9;
+  transition:border-color .3s,color .3s,background .3s,transform .3s}
+.quiz-end button:hover{border-color:var(--gold);color:#fff;transform:translateY(-1px)}
+.quiz-end .primary{background:linear-gradient(120deg,var(--gold),var(--orange));
+  border-color:var(--gold);color:#241304;font-weight:600;
+  box-shadow:0 10px 30px rgba(240,121,54,.35)}
+.quiz-end .primary:hover{color:#170b02;box-shadow:0 14px 38px rgba(255,207,122,.5)}
 
 /* Remerciements */
 .thanks-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;
@@ -866,22 +906,19 @@ h2 em{font-style:italic;color:var(--orange-2)}
 @keyframes thanksIn{from{opacity:0;transform:translateY(26px) scale(.985)}to{opacity:1;transform:none}}
 body.modal-open{overflow:hidden}
 
-/* Auteurs en fin de page */
-.final-authors{margin-top:26px;padding-top:22px;border-top:1px solid rgba(246,233,213,.12);
-  display:flex;flex-direction:column;gap:4px}
-.final-authors .role{font-family:var(--mono);font-size:8px;letter-spacing:.26em;
-  text-transform:uppercase;color:rgba(246,233,213,.4)}
-.final-authors .names{font-family:var(--serif);font-weight:600;
-  font-size:clamp(14px,1.5vw,19px);color:var(--sand);line-height:1.4}
-.final-authors .names+.role{margin-top:12px}
-.final-authors .design{color:var(--gold-2)}
-.final-thanks{margin-top:18px;align-self:center;font-family:var(--mono);font-size:8px;
-  letter-spacing:.2em;text-transform:uppercase;padding:10px 15px;cursor:pointer;
-  color:rgba(246,233,213,.6);background:transparent;
-  border:1px solid rgba(246,233,213,.18);
-  transition:border-color .3s,color .3s,background .3s}
-.final-thanks:hover{color:var(--orange-2);border-color:var(--orange);
-  background:rgba(240,121,54,.12)}
+/* Crédits de fin — puces discrètes et lumineuses */
+.credit-authors{color:#ffe6c2!important;border-color:rgba(255,216,142,.4)!important;
+  background:rgba(255,216,142,.1)}
+.credit-design{color:var(--gold-2)!important;border-color:rgba(255,216,142,.32)!important;
+  background:rgba(255,216,142,.06)}
+.credits .credit-thanks{font-family:var(--mono);font-size:9px;letter-spacing:.2em;
+  text-transform:uppercase;cursor:pointer;padding:6px 13px;border-radius:999px;
+  color:#2a1a06;background:linear-gradient(120deg,var(--gold-2),var(--gold));
+  border:1px solid var(--gold);box-shadow:0 8px 26px rgba(255,207,122,.32);
+  transition:transform .3s,box-shadow .3s,filter .3s}
+.credits .credit-thanks:hover{transform:translateY(-2px);
+  box-shadow:0 12px 34px rgba(255,216,142,.5);filter:brightness(1.06)}
+.credits .credit-thanks:active{transform:translateY(0)}
 
 @media (max-width:900px){
   .q-opts{grid-template-columns:1fr;padding-left:0}
@@ -1270,6 +1307,29 @@ html.lb-open{overflow:hidden}
 }
 
 /* ============================================================
+   PASSE DE LUMINOSITÉ — lisibilité des textes secondaires
+   ============================================================ */
+.final-note{color:rgba(255,244,227,.8)}
+.coda p{color:rgba(255,244,227,.72)}
+.coda b{color:var(--gold-2)}
+.archive-sub{color:rgba(255,244,227,.78)}
+.ar-block-head>p{color:rgba(255,244,227,.8)}
+.ar-note p{color:rgba(255,244,227,.9)}
+.ar-note small,.map-stats span{color:rgba(255,244,227,.56)}
+.map-note{color:rgba(255,244,227,.52)}
+.map-legend{color:rgba(255,244,227,.6)}
+.years button{color:rgba(255,244,227,.74)}
+.cost-intro p{color:rgba(255,244,227,.84)}
+.cost-intro p.note{color:rgba(255,244,227,.66)}
+.cost-name small{color:rgba(255,244,227,.52)}
+.cost-toggle button{color:rgba(255,244,227,.72)}
+.sources details li{color:rgba(255,244,227,.78)}
+.fine{color:rgba(255,244,227,.66)}
+.lb-credit{color:rgba(255,244,227,.56)}
+.chapter-count{color:rgba(255,244,227,.52)}
+.sommaire-head span:last-child{color:rgba(255,244,227,.58)}
+
+/* ============================================================
    ACCESSIBILITÉ
    ============================================================ */
 @media (prefers-reduced-motion:reduce){
@@ -1295,6 +1355,10 @@ html.lb-open{overflow:hidden}
   .spot-panel.on{animation:none}
   .cost-bar i{transition:none}
   .lightbox[open]{animation:none}
+  .hero-school>*,.hero-school::after,.quiz-meter span::after,
+  .q-opt.correct,.q-opt.wrong,.q-exp,.quiz-end,.thanks-card{animation:none!important}
+  .q-card.reveal{animation:none!important}
+  .quiz-meter span{transition:none}
 }
 </style>
 </head>
@@ -3818,6 +3882,29 @@ html.lb-open{overflow:hidden}
       </aside>
     </article>
 
+    <!-- QUIZ DE RÉVISION — dans le cours -->
+    <div class="quiz-block" id="quiz" role="group" aria-labelledby="quiz-title">
+      <header class="quiz-head ar-reveal">
+        <p class="lesson-kicker">Quiz de révision · 6 questions</p>
+        <h3 id="quiz-title">Avez-vous <em>tout retenu</em> ?</h3>
+        <p class="quiz-lede">Six questions pour vérifier l'essentiel : une réponse par question, la correction s'affiche aussitôt, le score se met à jour.</p>
+        <div class="quiz-meter" aria-hidden="true"><span id="quizBar"></span></div>
+        <p class="quiz-progress" id="quizProgress" aria-live="polite">Réponses : 0 / 6</p>
+      </header>
+
+      <div class="quiz-list" id="quizList"></div>
+
+      <div class="quiz-end" id="quizEnd" hidden>
+        <p class="quiz-score-label">Votre score</p>
+        <p class="quiz-score"><b id="quizScore">0</b><span>/ 6</span></p>
+        <p class="quiz-verdict" id="quizVerdict"></p>
+        <div class="row">
+          <button class="primary" id="quizThanks" type="button">Message de fin</button>
+          <button id="quizReset" type="button">Recommencer</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -4251,33 +4338,6 @@ html.lb-open{overflow:hidden}
   </div>
 </section>
 
-<!-- ==========================================================
-     QUIZ FINAL
-     ========================================================== -->
-<section class="quiz" id="quiz" aria-labelledby="quiz-title">
-  <div class="quiz-inner">
-    <header class="quiz-head">
-      <p class="eyebrow">Quiz final · 6 questions</p>
-      <h2 id="quiz-title">Avez-vous <em>tout retenu</em> ?</h2>
-      <p class="quiz-lede">Six questions pour vérifier l'essentiel du cours. Choisissez une réponse : la bonne réponse s'éclaire, l'explication apparaît, et le score se met à jour.</p>
-      <div class="quiz-meter" aria-hidden="true"><span id="quizBar"></span></div>
-      <p class="quiz-progress" id="quizProgress" aria-live="polite">Réponses : 0 / 6</p>
-    </header>
-
-    <div class="quiz-list" id="quizList"></div>
-
-    <div class="quiz-end" id="quizEnd" hidden>
-      <p class="quiz-score-label">Votre score</p>
-      <p class="quiz-score"><b id="quizScore">0</b><span>/ 6</span></p>
-      <p class="quiz-verdict" id="quizVerdict"></p>
-      <div class="row">
-        <button class="primary" id="quizThanks" type="button">Message de fin</button>
-        <button id="quizReset" type="button">Recommencer</button>
-      </div>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <!-- ==========================================================
@@ -4336,16 +4396,9 @@ html.lb-open{overflow:hidden}
 
     <div class="credits">
       <span>1914 — 1918</span>
-      <span>Un site animé · 15 photographies d'archives</span>
-      <span>HTML · CSS · JavaScript</span>
-    </div>
-
-    <div class="final-authors">
-      <p class="role">Recherche · informations · présentation</p>
-      <p class="names">Ghita · Nada · Imane · Wissal · Marwa</p>
-      <p class="role">Design &amp; réalisation du site</p>
-      <p class="names design">Rayane Jabri</p>
-      <button class="final-thanks" id="finalThanks" type="button">Message de fin · Avez-vous des questions ?</button>
+      <span class="credit-authors">Réalisé par Ghita · Nada · Imane · Wissal · Marwa</span>
+      <span class="credit-design">Design · Rayane Jabri</span>
+      <button class="credit-thanks" id="finalThanks" type="button">Message de fin</button>
     </div>
   </div>
 </section>
@@ -4561,6 +4614,8 @@ html.lb-open{overflow:hidden}
   if (coursSection){
     stops.push({el: coursSection});
     coursSection.querySelectorAll('.lesson').forEach(el => stops.push({el}));
+    const quizSection = document.getElementById('quiz');
+    if (quizSection) stops.push({el: quizSection});
   }
   if (archiveSection){
     stops.push({el: archiveSection});
@@ -4570,8 +4625,6 @@ html.lb-open{overflow:hidden}
     });
   }
   const fin = document.getElementById('fin');
-  const quizSection = document.getElementById('quiz');
-  if (quizSection) stops.push({el: quizSection});
   if (fin) stops.push({el: fin});
   stops.push({end: true, el: null});
 
@@ -4610,6 +4663,12 @@ html.lb-open{overflow:hidden}
     } else if (s.el === fin && !reduce && !seen.has(fin)){
       seen.add(fin);
       fin.classList.add('arrive');
+    } else if (s.el && s.el.id === 'quiz' && !reduce && !seen.has(s.el)){
+      seen.add(s.el);
+      s.el.querySelectorAll('.q-card').forEach((card, i) => {
+        card.style.animationDelay = ((i % 3) * 70) + 'ms';
+        card.classList.add('reveal');
+      });
     }
   }
 
@@ -5115,6 +5174,18 @@ html.lb-open{overflow:hidden}
     quizUpdate();
   }
 
+  let quizObs = null;
+  if ('IntersectionObserver' in window && !reduce){
+    quizObs = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting){
+          en.target.classList.add('reveal');
+          quizObs.unobserve(en.target);
+        }
+      });
+    }, {threshold: .12});
+  }
+
   function buildQuiz(){
     if (!quizList) return;
     quizList.innerHTML = '';
@@ -5152,6 +5223,12 @@ html.lb-open{overflow:hidden}
       card.appendChild(opts);
       card.appendChild(exp);
       quizList.appendChild(card);
+      if (quizObs){
+        card.style.animationDelay = ((qi % 3) * 70) + 'ms';
+        quizObs.observe(card);
+      } else {
+        card.classList.add('reveal');
+      }
     });
   }
 
@@ -5198,6 +5275,12 @@ html.lb-open{overflow:hidden}
     answers.fill(-1);
     if (quizEnd) quizEnd.hidden = true;
     buildQuiz();
+    if (quizList){
+      quizList.querySelectorAll('.q-card').forEach((card, i) => {
+        card.style.animationDelay = ((i % 3) * 70) + 'ms';
+        card.classList.add('reveal');
+      });
+    }
     quizUpdate();
   });
 
