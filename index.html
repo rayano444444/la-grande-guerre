@@ -148,17 +148,20 @@ strong{color:#241006;font-weight:600}
   color:var(--brick-2);transform:translateY(-.35em);
 }
 
-/* présentateur */
-.by{
-  display:inline-flex;align-items:center;gap:9px;margin:14px 0 0;
-  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--blue);
-  background:rgba(28,95,140,.07);
-  border:1px solid rgba(28,95,140,.28);
-  border-radius:999px;padding:6px 14px 6px 12px;
+/* présentateurs */
+.who{
+  margin-top:clamp(24px,3.2vw,34px);
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  max-width:820px;
 }
-.by::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue)}
-.by b{font-weight:600}
+.who div{background:var(--card);padding:clamp(14px,2.1vw,19px) clamp(16px,2.4vw,22px)}
+.who b{display:block;font-family:var(--serif);font-size:clamp(16px,1.5vw,19px);font-weight:700;color:#241006}
+.who span{
+  display:block;margin-top:5px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--brick-2);line-height:1.7;
+}
 
 /* ---------- plan ---------- */
 .plan{
@@ -246,6 +249,63 @@ tr:hover td{background:rgba(255,241,226,.5)}
   letter-spacing:.26em;text-transform:uppercase;color:var(--brick);
 }
 .note p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.7}
+
+/* ---------- photographies ---------- */
+.fig{
+  margin:clamp(28px,3.4vw,40px) 0 0;
+  max-width:720px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:9px 9px 0;
+  box-shadow:0 16px 38px rgba(120,52,30,.07);
+}
+.figs{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,1.8vw,18px);
+  margin-top:clamp(28px,3.4vw,40px);
+}
+.figs .fig{margin:0;max-width:none}
+.fig.tall{max-width:520px}
+.fig .shot{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;margin:0;padding:0;border:0;
+  background:#f2e6d6;
+  border-radius:10px;overflow:hidden;position:relative;cursor:zoom-in;
+}
+.fig .shot img{
+  display:block;width:auto;max-width:100%;height:auto;max-height:min(68vh,560px);
+  filter:sepia(.14) contrast(1.02);
+  transition:transform .55s cubic-bezier(.2,.7,.3,1),filter .45s ease;
+}
+.fig .shot:hover img,.fig .shot:focus-visible img{transform:scale(1.04);filter:sepia(0) contrast(1.02)}
+.fig .shot:focus-visible{outline:2px solid var(--brick);outline-offset:3px}
+.fig .shot::after{
+  content:"Agrandir";position:absolute;right:10px;bottom:10px;
+  font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;
+  color:#fff7ee;background:rgba(38,18,12,.62);
+  border:1px solid rgba(255,247,238,.28);
+  padding:5px 10px;border-radius:999px;
+  opacity:0;transform:translateY(5px);pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease;
+}
+.fig .shot:hover::after,.fig .shot:focus-visible::after{opacity:1;transform:none}
+.fig figcaption{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 12px;
+  padding:11px 7px 14px;
+}
+.fig figcaption b{font-family:var(--serif);font-size:15px;font-weight:700;color:#241006;line-height:1.35}
+.fig figcaption span{
+  font-family:var(--mono);font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);line-height:1.7;
+}
+.end .fig{width:min(100%,540px);margin-top:clamp(34px,4.4vw,52px);text-align:left}
+
+/* visionneuse */
+.viewer[hidden]{display:none}
+.viewer{position:fixed;inset:0;z-index:95;display:grid;place-items:center;padding:clamp(16px,4vw,44px);background:rgba(38,18,12,.84);animation:fade .25s ease both}
+.viewer img{display:block;max-width:100%;max-height:82svh;border-radius:8px;background:#fff;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.viewer .viewer-cap{position:absolute;left:0;right:0;bottom:12px;text-align:center;color:#f6e3d2;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;padding:0 16px}
+.viewer .close{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,247,238,.3);background:rgba(38,18,12,.55);color:#fff7ee;font-size:20px;line-height:1;cursor:pointer}
 
 /* armes */
 .weapons{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:clamp(22px,3vw,28px)}
@@ -344,6 +404,9 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
   td:first-child{width:34%}
   .plan>li.sub{padding-left:0}
   .plan .lvl{width:2.6em}
+  .who{grid-template-columns:1fr}
+  .figs{grid-template-columns:1fr}
+  .fig{max-width:none}
 }
 
 @media (max-width:520px){
@@ -368,6 +431,29 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
 </header>
 
 <main>
+
+<!-- ======================= PRÉSENTATION ======================= -->
+<section class="part" id="presentation">
+  <div class="wrap">
+    <header class="head">
+      <p class="kicker pop">Présentation</p>
+      <h2 class="pop">Cet exposé est présenté par</h2>
+    </header>
+
+    <p class="lead pop">Exposé sur la Première Guerre mondiale (1914 – 1918). Chaque partie est présentée par :</p>
+
+    <div class="who">
+      <div class="pop"><b>Admane</b><span>Le plan</span></div>
+      <div class="pop"><b>Nada Abou Ali</b><span>Introduction</span></div>
+      <div class="pop"><b>Adam Saâidi</b><span>Les causes · Sarajevo · Le génocide arménien</span></div>
+      <div class="pop"><b>Khadija Daârouni</b><span>Les deux grands camps · La guerre des tranchées</span></div>
+      <div class="pop"><b>Ibtihal Kesbaoui</b><span>Verdun · Les nouvelles armes</span></div>
+      <div class="pop"><b>Zeina</b><span>Une guerre totale</span></div>
+      <div class="pop"><b>Msaad Driouch</b><span>Le bilan · Le traité de Versailles</span></div>
+      <div class="pop"><b>Chadi</b><span>Une nouvelle carte de l’Europe</span></div>
+    </div>
+  </div>
+</section>
 
 <!-- ======================= PLAN ======================= -->
 <section class="part" id="plan">
@@ -398,6 +484,7 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
       <li class="main pop"><span class="lvl">IV</span><span>Les conséquences de la guerre.</span></li>
       <li class="main pop"><span class="lvl">∞</span><span>Conclusion</span></li>
     </ol>
+
   </div>
 </section>
 
@@ -407,13 +494,20 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
     <header class="head">
       <p class="kicker pop">Introduction</p>
       <h2 class="pop">Introduction</h2>
-      <p class="by pop">Présenté par <b>Nada Abou Ali</b></p>
     </header>
 
     <p class="lead pop">La Première Guerre mondiale, souvent appelée « la Grande Guerre », était sans précédent car les nations du monde entier ont simultanément pris les armes les unes contre les autres.</p>
     <p class="pop">Les effets de la guerre ont été vastes et profonds, avec des conséquences qui se sont répercutées tout au long du XX<sup>e</sup> siècle. Les pertes humaines étaient énormes. On estime que plus de dix millions de soldats sont morts et vingt millions ont été blessés en conséquence directe de la guerre.</p>
     <p class="pop">L’utilisation d’armes chimiques, les bombardements aériens et le premier génocide du siècle expliquent la perte dramatique de personnel militaire. Les civils sont morts en nombre aussi choquant en raison des épidémies de faim et de grippe dans le monde.</p>
     <p class="pop">À la suite de ces énormes pertes, la Russie a perdu deux millions de personnes et la Serbie a perdu un tiers de sa population. La perte effroyable de vies humaines n’était qu’un des aspects de la guerre qui a changé le monde à jamais.</p>
+
+    <figure class="fig pop">
+      <button class="shot" type="button" data-shot="img/intro-mobilisation.jpg" data-cap="2 août 1914 — la foule lit les affiches de mobilisation, Paris">
+        <img src="img/intro-mobilisation.jpg" width="1100" height="798" loading="lazy" decoding="async" alt="Foule parisienne lisant les affiches de mobilisation générale, 2 août 1914.">
+      </button>
+      <figcaption><b>La mobilisation générale, août 1914</b><span>Wikimedia Commons · domaine public</span></figcaption>
+    </figure>
+
   </div>
 </section>
 
@@ -423,7 +517,6 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
     <header class="head">
       <p class="kicker pop">I</p>
       <h2 class="pop">Les causes de la première guerre mondiale</h2>
-      <p class="by pop">Présenté par <b>Adam Saâidi</b></p>
     </header>
 
     <h3 class="pop"><span class="n">1.</span> Des rivalités entre grandes puissances</h3>
@@ -445,6 +538,14 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
 
     <h3 class="pop">L’étincelle : l’attentat de Sarajevo</h3>
     <p class="pop">Le 28 juin 1914, l’archiduc François-Ferdinand, héritier de l’Empire austro-hongrois, est assassiné à Sarajevo (Bosnie) par un nationaliste serbe. Le jeu des alliances entraîne l’Europe dans la guerre en quelques semaines : l’Autriche-Hongrie déclare la guerre à la Serbie, la Russie mobilise, l’Allemagne déclare la guerre à la France (3 août 1914).</p>
+
+    <figure class="fig pop">
+      <button class="shot" type="button" data-shot="img/sarajevo.jpg" data-cap="Sarajevo, 28 juin 1914 — l’arrestation d’un suspect après l’attentat">
+        <img src="img/sarajevo.jpg" width="1100" height="708" loading="lazy" decoding="async" alt="Photographie de l’arrestation d’un suspect à Sarajevo, le 28 juin 1914.">
+      </button>
+      <figcaption><b>L’attentat de Sarajevo, 28 juin 1914</b><span>Wikimedia Commons · domaine public</span></figcaption>
+    </figure>
+
   </div>
 </section>
 
@@ -454,7 +555,6 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
     <header class="head">
       <p class="kicker pop">II</p>
       <h2 class="pop">Les deux grands camps</h2>
-      <p class="by pop">Présenté par <b>Khadija Daârouni</b></p>
     </header>
 
     <div class="camps">
@@ -479,6 +579,14 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
         <div class="plus">+ Empire ottoman (1914), Bulgarie</div>
       </article>
     </div>
+
+    <figure class="fig pop">
+      <button class="shot" type="button" data-shot="img/camps-europe-1914.jpg" data-cap="L’Europe des deux camps à la veille de la guerre, 1914">
+        <img src="img/camps-europe-1914.jpg" width="1100" height="792" loading="lazy" decoding="async" alt="Carte de l’Europe en 1914 montrant les deux systèmes d’alliance.">
+      </button>
+      <figcaption><b>L’Europe coupée en deux camps, 1914</b><span>Wikimedia Commons · domaine public</span></figcaption>
+    </figure>
+
   </div>
 </section>
 
@@ -518,14 +626,20 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
       </div>
     </div>
 
+
     <h3 class="pop">La violence de masse</h3>
 
     <h4 class="pop"><span class="n">1.</span> L’enfer des tranchées</h4>
-    <p class="by pop">Présenté par <b>Khadija Daârouni</b></p>
     <p class="pop">Les soldats français, surnommés « les Poilus », vivent dans des conditions épouvantables : froid, boue, rats, poux, manque d’hygiène et de nourriture, peur permanente de la mort. Ils sont soumis aux bombardements d’artillerie, aux assauts et aux gaz de combat, une arme nouvelle particulièrement terrifiante.</p>
 
+    <figure class="fig pop">
+      <button class="shot" type="button" data-shot="img/tranchees-somme.jpg" data-cap="Le Cheshire Regiment dans une tranchée de la Somme, 1916">
+        <img src="img/tranchees-somme.jpg" width="1100" height="840" loading="lazy" decoding="async" alt="Soldats britanniques du Cheshire Regiment dans une tranchée, front de la Somme, 1916.">
+      </button>
+      <figcaption><b>La vie dans les tranchées, Somme, 1916</b><span>Wikimedia Commons · domaine public</span></figcaption>
+    </figure>
+
     <h4 class="pop"><span class="n">2.</span> La bataille de Verdun (février – décembre 1916)</h4>
-    <p class="by pop">Présenté par <b>Ibtihal Kesbaoui</b></p>
     <p class="pop">Verdun est le symbole de la guerre de tranchées et de la violence de masse au programme du brevet.</p>
     <div class="card pop">
       <div class="cap">Détails</div>
@@ -543,8 +657,14 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
       </div>
     </div>
 
+    <figure class="fig pop">
+      <button class="shot" type="button" data-shot="img/verdun.jpg" data-cap="Fantassins du 164e régiment d’infanterie dans une tranchée, région de Verdun, 1916">
+        <img src="img/verdun.jpg" width="1100" height="794" loading="lazy" decoding="async" alt="Soldats du 164e régiment d’infanterie dans une tranchée, région de Verdun, 1916.">
+      </button>
+      <figcaption><b>Verdun, la guerre d’usure, 1916</b><span>Wikimedia Commons · domaine public</span></figcaption>
+    </figure>
+
     <h3 class="pop">Les nouvelles armes industrielles</h3>
-    <p class="by pop">Présenté par <b>Ibtihal Kesbaoui</b></p>
     <div class="weapons">
       <article class="weapon pop">
         <h5>Artillerie lourde</h5>
@@ -572,6 +692,22 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
         <p>Reconnaissance aérienne, bombardement, combats aériens (les « as »).</p>
       </article>
     </div>
+
+    <div class="figs">
+      <figure class="fig pop">
+        <button class="shot" type="button" data-shot="img/char-mark-i.jpg" data-cap="Un char britannique Mark I, Somme, septembre 1916">
+          <img src="img/char-mark-i.jpg" width="1100" height="779" loading="lazy" decoding="async" alt="Char britannique Mark I sur le front de la Somme, 1916.">
+        </button>
+        <figcaption><b>Le char d’assaut Mark I, 1916</b><span>Wikimedia Commons · domaine public</span></figcaption>
+      </figure>
+      <figure class="fig pop">
+        <button class="shot" type="button" data-shot="img/gaz-masques.jpg" data-cap="Fantassins australiens équipés de masques à gaz, front d’Ypres, 1917">
+          <img src="img/gaz-masques.jpg" width="1100" height="1473" loading="lazy" decoding="async" alt="Soldats australiens portant des masques à gaz, front d’Ypres, 1917.">
+        </button>
+        <figcaption><b>La protection contre les gaz, 1917</b><span>Wikimedia Commons · domaine public</span></figcaption>
+      </figure>
+    </div>
+
   </div>
 </section>
 
@@ -581,7 +717,6 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
     <header class="head">
       <p class="kicker pop">1915 – 1916</p>
       <h2 class="pop">Le génocide des Arméniens</h2>
-      <p class="by pop">Présenté par <b>Adam Saâidi</b></p>
     </header>
 
     <p class="pop">Les Arméniens sont une minorité chrétienne (≈ 2 millions) vivant dans l’Empire ottoman (actuelle Turquie). En 1914, l’Empire ottoman entre en guerre aux côtés des Empires centraux. Après une défaite militaire face aux Russes, le gouvernement nationaliste des Jeunes-Turcs accuse les Arméniens de trahison.</p>
@@ -605,6 +740,14 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
       <h5>Définition</h5>
       <p>Un génocide est l’extermination volontaire, systématique et planifiée de tout un peuple en raison de son origine ethnique, religieuse ou culturelle. Le génocide des Arméniens est le premier du XX<sup>e</sup> siècle, suivi par celui des Juifs et des Tsiganes pendant la Seconde Guerre mondiale.</p>
     </aside>
+
+    <figure class="fig pop">
+      <button class="shot" type="button" data-shot="img/armenie-refugies.jpg" data-cap="Réfugiés arméniens chassés de leurs foyers, 1915">
+        <img src="img/armenie-refugies.jpg" width="1100" height="798" loading="lazy" decoding="async" alt="Réfugiés arméniens déportés en 1915.">
+      </button>
+      <figcaption><b>Les déportés arméniens, 1915</b><span>Wikimedia Commons · domaine public</span></figcaption>
+    </figure>
+
   </div>
 </section>
 
@@ -614,7 +757,6 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
     <header class="head">
       <p class="kicker pop">V</p>
       <h2 class="pop">Une guerre totale</h2>
-      <p class="by pop">Présenté par <b>Zeina</b></p>
     </header>
 
     <p class="lead pop">La Première Guerre mondiale est la première guerre totale de l’histoire : elle mobilise toutes les ressources des sociétés en guerre.</p>
@@ -641,6 +783,14 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
       <h5>À retenir</h5>
       <p>Ce qui fait de la Première Guerre mondiale une guerre totale, c’est que toute la société — pas seulement les soldats — est impliquée dans le conflit. L’économie, la science, la culture, l’information sont mises au service de la guerre. C’est un concept clé du brevet.</p>
     </aside>
+
+    <figure class="fig tall pop">
+      <button class="shot" type="button" data-shot="img/munitionnettes.jpg" data-cap="Les « munitionnettes » dans une usine d’armement, 1916">
+        <img src="img/munitionnettes.jpg" width="1100" height="1583" loading="lazy" decoding="async" alt="Ouvrières d’une usine d’armement, les « munitionnettes », pendant la Première Guerre mondiale.">
+      </button>
+      <figcaption><b>Les femmes dans les usines d’armement</b><span>Wikimedia Commons · domaine public</span></figcaption>
+    </figure>
+
   </div>
 </section>
 
@@ -650,7 +800,6 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
     <header class="head">
       <p class="kicker pop">Le bilan</p>
       <h2 class="pop">Le bilan et le traité de Versailles</h2>
-      <p class="by pop">Présenté par <b>Msaad Driouch</b></p>
     </header>
 
     <h3 class="pop">Un bilan humain catastrophique</h3>
@@ -667,6 +816,13 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
         </table>
       </div>
     </div>
+
+    <figure class="fig tall pop">
+      <button class="shot" type="button" data-shot="img/gueules-cassees.jpg" data-cap="Les « gueules cassées » et leurs masques de prothèse faciale, Paris">
+        <img src="img/gueules-cassees.jpg" width="1100" height="1532" loading="lazy" decoding="async" alt="Soldats défigurés, les « gueules cassées », portant des masques de prothèse faciale.">
+      </button>
+      <figcaption><b>Les « gueules cassées »</b><span>Wikimedia Commons · domaine public</span></figcaption>
+    </figure>
 
     <h3 class="pop">Le traité de Versailles (28 juin 1919)</h3>
     <div class="card pop">
@@ -685,6 +841,14 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
         </table>
       </div>
     </div>
+
+    <figure class="fig pop">
+      <button class="shot" type="button" data-shot="img/versailles.jpg" data-cap="Signature du traité de Versailles, galerie des Glaces, 28 juin 1919">
+        <img src="img/versailles.jpg" width="1100" height="797" loading="lazy" decoding="async" alt="La signature du traité de Versailles dans la galerie des Glaces, le 28 juin 1919.">
+      </button>
+      <figcaption><b>Le traité de Versailles, 28 juin 1919</b><span>Wikimedia Commons · domaine public</span></figcaption>
+    </figure>
+
   </div>
 </section>
 
@@ -694,11 +858,18 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
     <header class="head">
       <p class="kicker pop">Après-guerre</p>
       <h2 class="pop">Une nouvelle carte de l’Europe</h2>
-      <p class="by pop">Présenté par <b>Chadi</b></p>
     </header>
 
     <p class="pop">Les traités de paix redessinent la carte de l’Europe. Les empires disparaissent (Empire ottoman, Empire austro-hongrois, Empire russe, Empire allemand) et de nouveaux États apparaissent : Pologne, Tchécoslovaquie, Yougoslavie, pays baltes (Estonie, Lettonie, Lituanie), Finlande.</p>
     <p class="pop">Le traité de Versailles, perçu comme un « diktat » humiliant par les Allemands, crée un profond ressentiment en Allemagne. Ce ressentiment sera exploité par Hitler pour arriver au pouvoir en 1933. La Première Guerre mondiale porte en elle les germes de la Seconde.</p>
+
+    <figure class="fig pop">
+      <button class="shot" type="button" data-shot="img/carte-europe-1919.jpg" data-cap="La nouvelle carte de l’Europe après les traités de paix, 1919">
+        <img src="img/carte-europe-1919.jpg" width="1100" height="825" loading="lazy" decoding="async" alt="Carte politique de l’Europe redessinée par les traités de paix de 1919.">
+      </button>
+      <figcaption><b>L’Europe redessinée par les traités</b><span>Wikimedia Commons · domaine public</span></figcaption>
+    </figure>
+
   </div>
 </section>
 
@@ -707,6 +878,13 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
   <div class="wrap">
     <h2 class="pop">Merci de votre attention.</h2>
     <p class="q pop">Avez-vous des questions ?</p>
+
+    <figure class="fig pop">
+      <button class="shot" type="button" data-shot="img/armistice.jpg" data-cap="L’annonce de l’armistice, Paris, 11 novembre 1918">
+        <img src="img/armistice.jpg" width="1100" height="803" loading="lazy" decoding="async" alt="La foule célèbre l’annonce de l’armistice à Paris, le 11 novembre 1918.">
+      </button>
+      <figcaption><b>L’armistice, 11 novembre 1918</b><span>Wikimedia Commons · domaine public</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -723,18 +901,25 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
     <button class="close" type="button" data-close aria-label="Fermer">×</button>
     <h3 id="sheetTitle">Sommaire</h3>
     <ol>
-      <li><a href="#plan"><span>00</span>Le plan</a></li>
-      <li><a href="#introduction"><span>01</span>Introduction</a></li>
-      <li><a href="#causes"><span>02</span>Les causes</a></li>
-      <li><a href="#camps"><span>03</span>Les deux grands camps</a></li>
-      <li><a href="#deroulement"><span>04</span>Le déroulement de la guerre</a></li>
-      <li><a href="#genocide"><span>05</span>Le génocide des Arméniens</a></li>
-      <li><a href="#guerre-totale"><span>06</span>Une guerre totale</a></li>
-      <li><a href="#bilan"><span>07</span>Le bilan et le traité de Versailles</a></li>
-      <li><a href="#carte"><span>08</span>Une nouvelle carte de l’Europe</a></li>
-      <li><a href="#fin"><span>09</span>Merci de votre attention</a></li>
+      <li><a href="#presentation"><span>00</span>Présentation</a></li>
+      <li><a href="#plan"><span>01</span>Le plan</a></li>
+      <li><a href="#introduction"><span>02</span>Introduction</a></li>
+      <li><a href="#causes"><span>03</span>Les causes</a></li>
+      <li><a href="#camps"><span>04</span>Les deux grands camps</a></li>
+      <li><a href="#deroulement"><span>05</span>Le déroulement de la guerre</a></li>
+      <li><a href="#genocide"><span>06</span>Le génocide des Arméniens</a></li>
+      <li><a href="#guerre-totale"><span>07</span>Une guerre totale</a></li>
+      <li><a href="#bilan"><span>08</span>Le bilan et le traité de Versailles</a></li>
+      <li><a href="#carte"><span>09</span>Une nouvelle carte de l’Europe</a></li>
+      <li><a href="#fin"><span>10</span>Merci de votre attention</a></li>
     </ol>
   </div>
+</div>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Photographie agrandie">
+  <button class="close" type="button" data-viewer-close aria-label="Fermer">×</button>
+  <img id="viewerImg" src="" alt="">
+  <p class="viewer-cap" id="viewerCap"></p>
 </div>
 
 <script>
@@ -834,8 +1019,37 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
   sheet.addEventListener('click', function (e) {
     if (e.target.hasAttribute('data-close') || e.target.tagName === 'A') closeSheet();
   });
+
+  /* ---------- photographies (visionneuse) ---------- */
+  var viewer = document.getElementById('viewer');
+  var vImg = document.getElementById('viewerImg');
+  var vCap = document.getElementById('viewerCap');
+  var vLast = null;
+
+  function openViewer(from) {
+    var im = from.querySelector('img');
+    vLast = from;
+    vImg.src = from.getAttribute('data-shot') || (im ? (im.currentSrc || im.src) : '');
+    vImg.alt = im ? im.alt : '';
+    vCap.textContent = from.getAttribute('data-cap') || '';
+    viewer.hidden = false;
+    viewer.querySelector('.close').focus();
+  }
+  function closeViewer() {
+    if (viewer.hidden) return;
+    viewer.hidden = true;
+    vImg.removeAttribute('src');
+    if (vLast) vLast.focus();
+  }
+
+  document.addEventListener('click', function (e) {
+    var shot = e.target.closest ? e.target.closest('.shot') : null;
+    if (shot) { openViewer(shot); return; }
+    if (e.target === viewer || e.target.hasAttribute('data-viewer-close')) closeViewer();
+  });
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeSheet();
+    if (e.key === 'Escape') { closeSheet(); closeViewer(); }
   });
 })();
 </script>
