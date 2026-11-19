@@ -341,6 +341,39 @@ tr:hover td{background:rgba(255,241,226,.5)}
 }
 .quiz-progress span{color:var(--brick);font-weight:600}
 
+/* question à choix multiples */
+.quiz .qt em{
+  display:inline-block;margin-left:6px;padding:2px 6px;border-radius:4px;
+  font-family:var(--mono);font-size:8px;font-style:normal;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--brick);background:rgba(168,52,42,.09);
+  vertical-align:middle;
+}
+.quiz .qhint{
+  margin:12px 0 9px;font-family:var(--mono);font-size:9px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--brick);
+}
+.choices{display:grid;gap:7px}
+.choice{
+  display:flex;align-items:baseline;gap:10px;width:100%;text-align:left;
+  padding:9px 12px;border:1px solid var(--line);border-radius:9px;
+  background:rgba(255,247,238,.7);font:inherit;font-size:14.5px;line-height:1.5;
+  color:var(--ink-2);cursor:pointer;
+  transition:border-color .2s ease,background .2s ease,transform .2s ease;
+}
+.choice:hover:not(:disabled){border-color:rgba(168,52,42,.35);background:var(--paper-2);transform:translateX(2px)}
+.choice:focus-visible{outline:2px solid var(--brick);outline-offset:2px}
+.choice:disabled{cursor:default}
+.quiz .choice b{
+  flex:0 0 auto;font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:.1em;color:var(--brick);
+}
+.choice.correct{border-color:rgba(46,120,70,.55);background:rgba(46,120,70,.1);color:var(--ink)}
+.choice.wrong{border-color:rgba(168,52,42,.55);background:rgba(168,52,42,.08)}
+.quiz .choice.correct b{color:#2e7846}
+.quiz .feedback{margin:10px 0 0;font-size:14px}
+.quiz .feedback.ok{color:#2e7846}
+.quiz .feedback.no{color:var(--brick)}
+
 /* visionneuse */
 .viewer[hidden]{display:none}
 .viewer{position:fixed;inset:0;z-index:95;display:grid;place-items:center;padding:clamp(16px,4vw,44px);background:rgba(38,18,12,.84);animation:fade .25s ease both}
@@ -922,13 +955,22 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
       <h2 class="pop">15 questions sur la Grande Guerre</h2>
     </header>
 
-    <p class="lead pop">Un clic sur une question affiche la réponse, prise dans le texte de l’exposé.</p>
+    <p class="lead pop">Un clic sur une question affiche la réponse, prise dans le texte de l’exposé. La première est un QCM : choisissez A, B, C ou D.</p>
 
     <div class="quiz" id="quiz">
 
       <details class="pop">
-        <summary><span class="qn">01</span><span class="qt">Quand se déroule la Première Guerre mondiale et pourquoi est-elle « sans précédent » ?</span></summary>
-        <div class="qa"><p>De <b>1914 à 1918</b>. Elle est sans précédent parce que les nations du monde entier ont <b>simultanément pris les armes</b> les unes contre les autres. On l’appelle aussi « la Grande Guerre ».</p></div>
+        <summary><span class="qn">01</span><span class="qt">Quand se déroule la Première Guerre mondiale et pourquoi est-elle « sans précédent » ? <em>QCM</em></span></summary>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions">
+            <button class="choice" type="button" data-correct="true"><b>A</b><span>De 1914 à 1918, parce que les nations du monde entier ont simultanément pris les armes.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>B</b><span>De 1914 à 1918, parce que seule l’Europe a été touchée par le conflit.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>C</b><span>De 1918 à 1933, parce que la guerre a duré quinze ans.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>D</b><span>De 1914 à 1916, parce que le conflit s’est terminé à Verdun.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
@@ -1194,6 +1236,29 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
     }
     cards.forEach(function (card) { card.addEventListener('toggle', countAnswers); });
     countAnswers();
+
+    /* la première question est un QCM : on corrige au premier choix */
+    quiz.querySelectorAll('.choices').forEach(function (group) {
+      group.addEventListener('click', function (e) {
+        var choice = e.target.closest ? e.target.closest('.choice') : null;
+        if (!choice || group.getAttribute('data-done')) return;
+        group.setAttribute('data-done', '1');
+        var right = choice.getAttribute('data-correct') === 'true';
+        group.querySelectorAll('.choice').forEach(function (c) {
+          c.disabled = true;
+          if (c.getAttribute('data-correct') === 'true') c.classList.add('correct');
+          else if (c === choice) c.classList.add('wrong');
+        });
+        var feedback = group.parentNode.querySelector('.feedback');
+        if (feedback) {
+          feedback.hidden = false;
+          feedback.className = 'feedback ' + (right ? 'ok' : 'no');
+          feedback.textContent = right
+            ? 'Bonne réponse ! Les nations du monde entier ont simultanément pris les armes les unes contre les autres.'
+            : 'La bonne réponse est la A : de 1914 à 1918, parce que les nations du monde entier ont pris les armes simultanément.';
+        }
+      });
+    });
   }
 
   document.addEventListener('keydown', function (e) {
