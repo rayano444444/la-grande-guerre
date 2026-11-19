@@ -955,7 +955,7 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
       <h2 class="pop">15 questions sur la Grande Guerre</h2>
     </header>
 
-    <p class="lead pop">Un clic sur une question affiche la réponse, prise dans le texte de l’exposé. La première est un QCM : choisissez A, B, C ou D.</p>
+    <p class="lead pop">Chaque question est un QCM : choisissez A, B, C ou D. La correction s’affiche immédiatement.</p>
 
     <div class="quiz" id="quiz">
 
@@ -963,7 +963,7 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
         <summary><span class="qn">01</span><span class="qt">Quand se déroule la Première Guerre mondiale et pourquoi est-elle « sans précédent » ? <em>QCM</em></span></summary>
         <div class="qa">
           <p class="qhint">Choisis la bonne réponse :</p>
-          <div class="choices" role="group" aria-label="Quatre propositions">
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Bonne réponse ! Les nations du monde entier ont simultanément pris les armes les unes contre les autres." data-no="La bonne réponse est la {lettre} : de 1914 à 1918, parce que les nations du monde entier ont pris les armes simultanément.">
             <button class="choice" type="button" data-correct="true"><b>A</b><span>De 1914 à 1918, parce que les nations du monde entier ont simultanément pris les armes.</span></button>
             <button class="choice" type="button" data-correct="false"><b>B</b><span>De 1914 à 1918, parce que seule l’Europe a été touchée par le conflit.</span></button>
             <button class="choice" type="button" data-correct="false"><b>C</b><span>De 1918 à 1933, parce que la guerre a duré quinze ans.</span></button>
@@ -975,77 +975,203 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
 
       <details class="pop">
         <summary><span class="qn">02</span><span class="qt">Quelles rivalités opposent les grandes puissances avant 1914 ?</span></summary>
-        <div class="qa"><p>Des rivalités coloniales (France/Allemagne en Afrique), une compétition économique, la course aux armements et des revendications territoriales, comme l’<b>Alsace-Lorraine perdue par la France en 1871</b>.</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : les rivalités coloniales, économiques et territoriales ont opposé les puissances avant 1914." data-no="La bonne réponse est la {lettre} : rivalités coloniales en Afrique, compétition économique, course aux armements et Alsace-Lorraine.">
+            <button class="choice" type="button" data-correct="false"><b>A</b><span>La course aux armements et un partage colonial franco-allemand en Asie.</span></button>
+            <button class="choice" type="button" data-correct="true"><b>B</b><span>Des rivalités coloniales (France/Allemagne en Afrique), une compétition économique, la course aux armements et la perte de l’Alsace-Lorraine en 1871.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>C</b><span>Une alliance entre la France et l’Allemagne contre le Royaume-Uni.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>D</b><span>La perte de la Serbie par la France en 1871.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
         <summary><span class="qn">03</span><span class="qt">Quels sont les deux systèmes d’alliance et quels pays les composent ?</span></summary>
-        <div class="qa"><p>La <b>Triple-Entente</b> : France, Royaume-Uni, Russie (avec la Belgique, la Serbie, l’Italie en 1915, les USA en 1917 et le Japon). La <b>Triple-Alliance</b>, ou Empires centraux : Allemagne, Autriche-Hongrie, Italie (qui change de camp en 1915), auxquels s’ajoutent l’Empire ottoman en 1914 et la Bulgarie.</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : la Triple-Entente réunit la France, le Royaume-Uni et la Russie ; la Triple-Alliance l’Allemagne, l’Autriche-Hongrie et l’Italie." data-no="La bonne réponse est la {lettre} : France · Royaume-Uni · Russie d’un côté, Allemagne · Autriche-Hongrie · Italie de l’autre.">
+            <button class="choice" type="button" data-correct="false"><b>A</b><span>Triple-Entente : Allemagne, Autriche-Hongrie, Italie ; Triple-Alliance : France, Royaume-Uni, Russie.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>B</b><span>Triple-Entente : France, Royaume-Uni, Italie ; Triple-Alliance : Allemagne, Autriche-Hongrie, Russie.</span></button>
+            <button class="choice" type="button" data-correct="true"><b>C</b><span>Triple-Entente : France, Royaume-Uni, Russie ; Triple-Alliance : Allemagne, Autriche-Hongrie, Italie.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>D</b><span>Triple-Entente : France, Belgique, Japon ; Triple-Alliance : Allemagne, Empire ottoman, Bulgarie.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
         <summary><span class="qn">04</span><span class="qt">Quel est l’événement déclencheur et comment la crise devient-elle une guerre ?</span></summary>
-        <div class="qa"><p>L’<b>attentat de Sarajevo</b>, le 28 juin 1914 : l’archiduc François-Ferdinand, héritier de l’Empire austro-hongrois, est assassiné par un nationaliste serbe. Le jeu des alliances entraîne l’Europe dans la guerre : l’Autriche-Hongrie déclare la guerre à la Serbie, la Russie mobilise et l’Allemagne déclare la guerre à la France le <b>3 août 1914</b>.</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : l’attentat du 28 juin 1914 déclenche la crise, et le jeu des alliances entraîne l’Europe dans la guerre." data-no="La bonne réponse est la {lettre} : l’attentat de Sarajevo (28 juin 1914) puis l’escalade jusqu’à la déclaration de guerre du 3 août.">
+            <button class="choice" type="button" data-correct="false"><b>A</b><span>La bataille de la Marne, en septembre 1914.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>B</b><span>La déclaration de guerre de l’Allemagne à la France le 3 août 1914, sans attentat préalable.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>C</b><span>L’attentat de Sarajevo du 28 juin 1915, qui opposa la France à l’Autriche-Hongrie.</span></button>
+            <button class="choice" type="button" data-correct="true"><b>D</b><span>L’assassinat de François-Ferdinand le 28 juin 1914 à Sarajevo ; l’Autriche-Hongrie déclare la guerre à la Serbie, la Russie mobilise et l’Allemagne déclare la guerre à la France le 3 août 1914.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
         <summary><span class="qn">05</span><span class="qt">Quelles sont les trois phases du conflit ?</span></summary>
-        <div class="qa"><p><b>1.</b> La guerre de mouvement (août – novembre 1914) ; <b>2.</b> la guerre de position, ou guerre des tranchées (fin 1914 – 1917) ; <b>3.</b> le retour de la guerre de mouvement (1918), qui se termine par la demande d’armistice de l’Allemagne le 11 novembre 1918.</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : le conflit passe de la guerre de mouvement à la guerre de position, avant un retour au mouvement en 1918." data-no="La bonne réponse est la {lettre} : mouvement (1914), position (fin 1914 – 1917), retour du mouvement (1918).">
+            <button class="choice" type="button" data-correct="false"><b>A</b><span>Guerre de position (1914), guerre de mouvement (1915), armistice (1918).</span></button>
+            <button class="choice" type="button" data-correct="true"><b>B</b><span>Guerre de mouvement (août – novembre 1914), guerre de position ou des tranchées (fin 1914 – 1917), retour de la guerre de mouvement (1918).</span></button>
+            <button class="choice" type="button" data-correct="false"><b>C</b><span>Guerre de mouvement (1914 – 1917), guerre de position (1918) et guerre totale (1919).</span></button>
+            <button class="choice" type="button" data-correct="false"><b>D</b><span>Guerre des tranchées (1914), bataille de Verdun (1916) et traité de Versailles (1919).</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
         <summary><span class="qn">06</span><span class="qt">Quel est le plan Schlieffen et comment est-il arrêté ?</span></summary>
-        <div class="qa"><p>C’est le plan allemand qui consiste à <b>envahir la France en passant par la Belgique</b>. L’armée française stoppe l’avancée lors de la bataille de la Marne, en septembre 1914. Le plan échoue : la guerre sera longue.</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : le plan Schlieffen échoue à la Marne en septembre 1914 ; la guerre sera longue." data-no="La bonne réponse est la {lettre} : le plan allemand prévoyait d’envahir la France par la Belgique, mais il est stoppé à la Marne.">
+            <button class="choice" type="button" data-correct="false"><b>A</b><span>Envahir la Russie par la Pologne ; le plan est arrêté à Verdun.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>B</b><span>Défendre la France depuis les tranchées ; le plan est arrêté à Verdun.</span></button>
+            <button class="choice" type="button" data-correct="true"><b>C</b><span>Envahir la France en passant par la Belgique ; l’armée française l’arrête à la bataille de la Marne, en septembre 1914.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>D</b><span>Envahir la Belgique en passant par la France ; la mobilisation russe l’arrête.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
         <summary><span class="qn">07</span><span class="qt">Que sait-on de la guerre des tranchées et des « Poilus » ?</span></summary>
-        <div class="qa"><p>Les armées creusent <b>700 km de tranchées</b>, de la mer du Nord à la Suisse. Les soldats français, surnommés « les Poilus », y vivent dans le froid, la boue, avec des rats et des poux, le manque d’hygiène et de nourriture, la peur permanente de la mort. Ils subissent les bombardements d’artillerie, les assauts et les gaz de combat.</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : les Poilus vivent dans des conditions épouvantables sur un front de 700 km, de la mer du Nord à la Suisse." data-no="La bonne réponse est la {lettre} : 700 km de tranchées et des conditions de vie épouvantables pour les soldats français.">
+            <button class="choice" type="button" data-correct="true"><b>A</b><span>700 km de tranchées de la mer du Nord à la Suisse ; les « Poilus », soldats français, subissent froid, boue, rats, poux, bombardements et gaz.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>B</b><span>700 km de tranchées de la Méditerranée à la Suisse ; les « Poilus » sont des soldats allemands.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>C</b><span>70 km de tranchées autour de Verdun ; les « Poilus » sont des civils français.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>D</b><span>700 km de tranchées de la mer du Nord à la Suisse ; les soldats y vivent confortablement et sont protégés des gaz.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
         <summary><span class="qn">08</span><span class="qt">Pourquoi Verdun est-elle le symbole de la violence de masse ?</span></summary>
-        <div class="qa"><p>La bataille dure <b>10 mois</b> (février – décembre 1916) : environ 700 000 morts et blessés, environ 53 millions d’obus tirés, environ 3 000 morts par jour, pour un gain territorial quasi nul. Elle symbolise le sacrifice des Poilus et la violence de masse industrielle.</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : Verdun est le symbole du sacrifice des Poilus et de la violence de masse industrielle." data-no="La bonne réponse est la {lettre} : 10 mois, ≈700 000 morts et blessés, ≈53 millions d’obus, gain territorial quasi nul.">
+            <button class="choice" type="button" data-correct="false"><b>A</b><span>10 mois (1914 – 1915), environ 700 000 obus tirés et un gain territorial important.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>B</b><span>3 mois en 1916, 300 000 morts et une victoire décisive française.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>C</b><span>10 mois en 1916, 53 millions de morts et 3 000 obus par jour.</span></button>
+            <button class="choice" type="button" data-correct="true"><b>D</b><span>10 mois (février – décembre 1916), environ 700 000 morts et blessés, 53 millions d’obus et un gain territorial quasi nul.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
         <summary><span class="qn">09</span><span class="qt">Quelles sont les nouvelles armes industrielles utilisées pendant la guerre ?</span></summary>
-        <div class="qa"><p>L’<b>artillerie lourde</b> (bombardements massifs), les <b>mitrailleuses</b> (feu automatique), les <b>gaz de combat</b> dès 1915 (gaz moutarde, phosgène), les <b>chars d’assaut</b> dès 1916 et l’<b>aviation</b> (reconnaissance, bombardement, combats aériens des « as »).</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : ces armes industrielles rendent les assauts meurtriers et détruisent les tranchées, les paysages et les corps." data-no="La bonne réponse est la {lettre} : artillerie lourde, mitrailleuses, gaz (1915), chars (1916) et aviation.">
+            <button class="choice" type="button" data-correct="false"><b>A</b><span>Des fusils, des arcs, des catapultes et des chevaux.</span></button>
+            <button class="choice" type="button" data-correct="true"><b>B</b><span>L’artillerie lourde, les mitrailleuses, les gaz de combat (1915), les chars d’assaut (1916) et l’aviation.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>C</b><span>Des sous-marins, le gaz moutarde en 1916, des chars en 1914 et des avions de reconnaissance seulement.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>D</b><span>De l’artillerie légère, des mitrailleuses, des gaz de combat et des chars de 1918.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
         <summary><span class="qn">10</span><span class="qt">Qui sont les Arméniens, pourquoi sont-ils visés et quel est le bilan du génocide ?</span></summary>
-        <div class="qa"><p>Les Arméniens sont une <b>minorité chrétienne</b> d’environ 2 millions de personnes vivant dans l’Empire ottoman. Après une défaite face aux Russes, le gouvernement nationaliste des Jeunes-Turcs les accuse à tort de trahison. Le 24 avril 1915, les élites sont arrêtées ; s’ensuivent massacres, déportation forcée vers les déserts de Syrie et famine organisée : <b>600 000 à 1,5 million de morts</b> selon les estimations.</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : les Arméniens sont une minorité chrétienne de l’Empire ottoman, victime du premier génocide du XXᵉ siècle." data-no="La bonne réponse est la {lettre} : minorité chrétienne de l’Empire ottoman, accusée à tort, déportée en Syrie ; jusqu’à 1,5 million de morts.">
+            <button class="choice" type="button" data-correct="false"><b>A</b><span>Une minorité musulmane de 2 millions vivant en Russie, accusée de trahison par le gouvernement russe.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>B</b><span>Une minorité chrétienne de 2 millions vivant en Allemagne, déportée vers la France.</span></button>
+            <button class="choice" type="button" data-correct="true"><b>C</b><span>Une minorité chrétienne d’environ 2 millions dans l’Empire ottoman, accusée à tort par les Jeunes-Turcs, déportée vers la Syrie : 600 000 à 1,5 million de morts.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>D</b><span>Une minorité chrétienne de 2 millions dans l’Empire ottoman, sauvée par les Russes, sans perte de vie.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
         <summary><span class="qn">11</span><span class="qt">Donnez la définition d’un génocide et dites comment celui des Arméniens est reconnu.</span></summary>
-        <div class="qa"><p>Un génocide est <b>l’extermination volontaire, systématique et planifiée de tout un peuple</b> en raison de son origine ethnique, religieuse ou culturelle. Celui des Arméniens est le premier du XX<sup>e</sup> siècle. Il est reconnu par la France en 2001, par l’ONU et par de nombreux pays, mais toujours nié par la Turquie.</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : le génocide des Arméniens est le premier du XXᵉ siècle, reconnu par la France en 2001 et par l’ONU." data-no="La bonne réponse est la {lettre} : extermination volontaire, systématique et planifiée d’un peuple pour son origine.">
+            <button class="choice" type="button" data-correct="true"><b>A</b><span>L’extermination volontaire, systématique et planifiée de tout un peuple en raison de son origine ethnique, religieuse ou culturelle.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>B</b><span>Une bataille meurtrière opposant deux armées sur un même territoire.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>C</b><span>Le déplacement volontaire d’une population vers une colonie.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>D</b><span>Une alliance militaire entre deux empires.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
         <summary><span class="qn">12</span><span class="qt">Qu’est-ce qui fait de la Première Guerre mondiale une « guerre totale » ?</span></summary>
-        <div class="qa"><p>Toute la société est impliquée, pas seulement les soldats : environ <b>70 millions d’hommes mobilisés</b>, conversion des industries en usines d’armement, production de masse et rationnement, femmes dans les usines (les « <b>munitionnettes</b> »), les champs et les transports, emprunts et impôts, propagande et censure du courrier. La frontière entre le front et l’arrière s’efface.</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : l’économie, la science, la culture et l’information sont mises au service de la guerre : toute la société est impliquée." data-no="La bonne réponse est la {lettre} : soldats, usines, femmes, finances, propagande et civils sont tous mobilisés.">
+            <button class="choice" type="button" data-correct="false"><b>A</b><span>Seuls les soldats sont mobilisés ; l’économie et les civils restent à l’écart.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>B</b><span>Toute la société est mobilisée, mais sans propagande ni censure.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>C</b><span>Les usines civiles sont converties, mais les femmes ne travaillent ni dans les usines ni dans les champs.</span></button>
+            <button class="choice" type="button" data-correct="true"><b>D</b><span>Toute la société est impliquée : 70 millions d’hommes mobilisés, usines d’armement, « munitionnettes », rationnement, propagande et civils victimes.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
         <summary><span class="qn">13</span><span class="qt">Quel est le bilan humain catastrophique de la guerre ?</span></summary>
-        <div class="qa"><p>Environ <b>10 millions de soldats tués</b> (dont environ 1 million de Français et 2 millions d’Allemands) et <b>20 millions de blessés</b>, dont 6 millions d’invalides et de mutilés. Les « gueules cassées » sont des soldats défigurés par les obus et les éclats. Les sociétés sont endeuillées, avec des monuments aux morts dans chaque commune et des traumatismes durables (shell shock).</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : 10 millions de tués, 20 millions de blessés, des « gueules cassées » et des traumatismes durables." data-no="La bonne réponse est la {lettre} : ≈10 millions de morts, ≈20 millions de blessés dont 6 millions d’invalides.">
+            <button class="choice" type="button" data-correct="false"><b>A</b><span>Environ 1 million de morts et 2 millions de blessés, sans invalides.</span></button>
+            <button class="choice" type="button" data-correct="true"><b>B</b><span>Environ 10 millions de soldats tués et 20 millions de blessés, dont 6 millions d’invalides ; les « gueules cassées » sont défigurées.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>C</b><span>Environ 20 millions de morts et 10 millions de blessés, tous Français.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>D</b><span>Environ 10 millions de morts, dont 2 millions de Français et 1 million d’Allemands.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
         <summary><span class="qn">14</span><span class="qt">Quelles sont les principales clauses du traité de Versailles ?</span></summary>
-        <div class="qa"><p>Le traité est signé le <b>28 juin 1919</b>. L’Allemagne est déclarée seule responsable de la guerre (article 231), doit payer de lourdes réparations, rend l’Alsace-Lorraine à la France et perd des territoires à l’Est. Son armée est limitée à 100 000 hommes, sans chars, aviation militaire ni sous-marins. La Société des Nations est créée pour maintenir la paix, mais les USA n’y adhèrent pas.</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : le traité de Versailles humilie l’Allemagne et crée la SDN, sans les USA." data-no="La bonne réponse est la {lettre} : 28 juin 1919, responsabilité allemande, réparations, Alsace-Lorraine, armée limitée et SDN.">
+            <button class="choice" type="button" data-correct="false"><b>A</b><span>Signé en 1918 ; la France est déclarée seule responsable et doit payer des réparations.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>B</b><span>Signé le 28 juin 1919 ; l’Allemagne garde 500 000 hommes et conserve l’Alsace-Lorraine.</span></button>
+            <button class="choice" type="button" data-correct="true"><b>C</b><span>Signé le 28 juin 1919 ; l’Allemagne est déclarée seule responsable, paie des réparations et rend l’Alsace-Lorraine ; son armée est limitée à 100 000 hommes ; la SDN est créée mais les USA n’y adhèrent pas.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>D</b><span>Signé le 28 juin 1919 ; la SDN est créée et les USA y adhèrent immédiatement.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
       <details class="pop">
         <summary><span class="qn">15</span><span class="qt">Comment la carte de l’Europe change-t-elle et quelles en sont les conséquences ?</span></summary>
-        <div class="qa"><p>Les empires ottoman, austro-hongrois, russe et allemand disparaissent ; de nouveaux États apparaissent : <b>Pologne, Tchécoslovaquie, Yougoslavie, pays baltes (Estonie, Lettonie, Lituanie) et Finlande</b>. Perçu comme un « diktat » humiliant, le traité crée un profond ressentiment en Allemagne, exploité par Hitler pour arriver au pouvoir en 1933 : la Première Guerre mondiale porte en elle les germes de la Seconde.</p></div>
+        <div class="qa">
+          <p class="qhint">Choisis la bonne réponse :</p>
+          <div class="choices" role="group" aria-label="Quatre propositions" data-ok="Exact : les traités font disparaître les empires et créent de nouveaux États ; le ressentiment allemand sera exploité par Hitler." data-no="La bonne réponse est la {lettre} : nouveaux États en Europe et germes de la Seconde Guerre mondiale.">
+            <button class="choice" type="button" data-correct="true"><b>A</b><span>Disparition des empires ottoman, austro-hongrois, russe et allemand ; apparition de la Pologne, de la Tchécoslovaquie, de la Yougoslavie, des pays baltes et de la Finlande ; ressentiment allemand exploité par Hitler en 1933.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>B</b><span>Les empires restent intacts ; seules les frontières de l’Allemagne changent.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>C</b><span>Apparition des empires ottoman et russe ; disparition de la Pologne et de la Finlande.</span></button>
+            <button class="choice" type="button" data-correct="false"><b>D</b><span>La carte de l’Europe reste inchangée après les traités de paix.</span></button>
+          </div>
+          <p class="feedback" hidden></p>
+        </div>
       </details>
 
     </div>
 
-    <p class="quiz-progress" id="quizProgress"><span>0 / 15</span> réponses consultées</p>
+    <p class="quiz-progress" id="quizProgress"><span>0 / 15</span> questions répondues</p>
   </div>
 </section>
 
@@ -1231,19 +1357,30 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
   if (quiz && quizProgress) {
     var cards = quiz.querySelectorAll('details');
     function countAnswers() {
-      quizProgress.innerHTML = '<span>' + quiz.querySelectorAll('details[open]').length +
-        ' / ' + cards.length + '</span> réponses consultées';
+      var n = quiz.querySelectorAll('.choices[data-done]').length;
+      quizProgress.innerHTML = '<span>' + n + ' / ' + cards.length +
+        '</span> questions répondues';
     }
     cards.forEach(function (card) { card.addEventListener('toggle', countAnswers); });
     countAnswers();
 
-    /* la première question est un QCM : on corrige au premier choix */
+    /* chaque question est un QCM : on corrige au premier choix */
+    document.querySelectorAll('.quiz .qt').forEach(function (qt) {
+      if (!qt.querySelector('em')) {
+        var tag = document.createElement('em');
+        tag.textContent = 'QCM';
+        qt.appendChild(tag);
+      }
+    });
+
     quiz.querySelectorAll('.choices').forEach(function (group) {
       group.addEventListener('click', function (e) {
         var choice = e.target.closest ? e.target.closest('.choice') : null;
         if (!choice || group.getAttribute('data-done')) return;
         group.setAttribute('data-done', '1');
         var right = choice.getAttribute('data-correct') === 'true';
+        var correctBtn = group.querySelector('.choice[data-correct="true"]');
+        var letter = correctBtn ? correctBtn.querySelector('b').textContent : '';
         group.querySelectorAll('.choice').forEach(function (c) {
           c.disabled = true;
           if (c.getAttribute('data-correct') === 'true') c.classList.add('correct');
@@ -1253,10 +1390,12 @@ html.js .card.in tbody tr{animation:rowIn .6s cubic-bezier(.2,.85,.3,1.08) both;
         if (feedback) {
           feedback.hidden = false;
           feedback.className = 'feedback ' + (right ? 'ok' : 'no');
-          feedback.textContent = right
-            ? 'Bonne réponse ! Les nations du monde entier ont simultanément pris les armes les unes contre les autres.'
-            : 'La bonne réponse est la A : de 1914 à 1918, parce que les nations du monde entier ont pris les armes simultanément.';
+          var msg = right
+            ? (group.getAttribute('data-ok') || 'Bonne réponse !')
+            : (group.getAttribute('data-no') || 'La bonne réponse est la {lettre}.');
+          feedback.textContent = msg.replace('{lettre}', letter);
         }
+        countAnswers();
       });
     });
   }
